@@ -4,8 +4,8 @@
   "description": "A shared layout animations like farmer motion.",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "tsup src --watch",
-    "build": "tsup src --dts",
+    "dev": "tsup --watch",
+    "build": "tsup --dts",
     "test": "vitest"
   },
   "keywords": [
@@ -29,6 +29,7 @@
     "eslint": "^8.51.0",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2",
+    "unplugin-vue-jsx": "^0.2.2",
     "vitest": "^0.34.6",
     "vue": "^3.3.4"
   }
