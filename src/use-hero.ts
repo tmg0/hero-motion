@@ -1,6 +1,6 @@
 import { computed, type Ref } from 'vue'
 import { tryOnBeforeUnmount, tryOnMounted, useElementBounding } from '@vueuse/core'
-import { useMotion } from '@vueuse/motion'
+import { useElementStyle, useMotion } from '@vueuse/motion'
 import omit from 'lodash.omit'
 import type { HeroProps } from './hero'
 import { useHeroContext } from './use-hero-context'
@@ -15,6 +15,7 @@ export const useHero = (props: UseHeroProps, { domRef }: UseHeroContext) => {
   const bounding: Record<string, number> = { x: 0, y: 0, width: 0, height: 0 }
   const context = useHeroContext()
   const curr = useElementBounding(domRef)
+  const { style } = useElementStyle(domRef)
 
   const prev = computed({
     get () {
@@ -43,8 +44,8 @@ export const useHero = (props: UseHeroProps, { domRef }: UseHeroContext) => {
       _x = prev.value.x - bounding.x
     }
 
-    const initial = { x: `${_x}px`, y: `${_y}px`, width: prev.value.width, height: prev.value.height }
-    const enter = { x: 0, y: 0, width: bounding.width, height: bounding.height, transition: props.transition }
+    const initial = { ...prev.value, x: `${_x}px`, y: `${_y}px`, width: prev.value.width, height: prev.value.height }
+    const enter = { ...style, x: 0, y: 0, width: bounding.width, height: bounding.height, transition: props.transition }
 
     useMotion(domRef, {
       initial: omit(initial, props.ignore),
@@ -53,7 +54,7 @@ export const useHero = (props: UseHeroProps, { domRef }: UseHeroContext) => {
   })
 
   tryOnBeforeUnmount(() => {
-    prev.value = { ...bounding }
+    prev.value = { ...style, ...bounding }
   })
 
   return { bounding }
