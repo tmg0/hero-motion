@@ -16,7 +16,8 @@ const defaultTransition = {
 const props = {
   as: { type: String as PropType<'div'>, default: 'div' },
   layoutId: { type: [String, Number], default: undefined },
-  transition: { type: Object as PropType<Transition>, default: () => defaultTransition }
+  transition: { type: Object as PropType<Transition>, default: () => defaultTransition },
+  ignore: { type: Array as PropType<string[]>, default: () => [] }
 }
 
 export type HeroProps = ExtractPropTypes<typeof props>

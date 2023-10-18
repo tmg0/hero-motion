@@ -1,6 +1,7 @@
 import { computed, type Ref } from 'vue'
 import { tryOnBeforeUnmount, tryOnMounted, useElementBounding } from '@vueuse/core'
 import { useMotion } from '@vueuse/motion'
+import omit from 'lodash.omit'
 import type { HeroProps } from './hero'
 import { useHeroContext } from './use-hero-context'
 
@@ -42,9 +43,12 @@ export const useHero = (props: UseHeroProps, { domRef }: UseHeroContext) => {
       _x = prev.value.x - bounding.x
     }
 
+    const initial = { x: `${_x}px`, y: `${_y}px`, width: prev.value.width, height: prev.value.height }
+    const enter = { x: 0, y: 0, width: bounding.width, height: bounding.height, transition: props.transition }
+
     useMotion(domRef, {
-      initial: { x: `${_x}px`, y: `${_y}px`, width: prev.value.width, height: prev.value.height },
-      enter: { x: 0, y: 0, width: bounding.width, height: bounding.height, transition: props.transition }
+      initial: omit(initial, props.ignore),
+      enter: omit(enter, props.ignore)
     })
   })
 
