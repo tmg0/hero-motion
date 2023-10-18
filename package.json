@@ -1,6 +1,6 @@
 {
   "name": "hero-motion",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A shared layout animations like farmer motion.",
   "main": "dist/index.js",
   "scripts": {
