@@ -1,0 +1,1 @@
+export const PROVIDE_CONTEXT = '_HERO_MOTION:CONTEXT'

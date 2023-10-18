@@ -1,0 +1,35 @@
+{
+  "name": "hero-motion",
+  "version": "0.0.1",
+  "description": "A shared layout animations like farmer motion.",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsup src --watch",
+    "build": "tsup src --dts",
+    "test": "vitest"
+  },
+  "keywords": [
+    "animation",
+    "vue",
+    "motion",
+    "vueuse"
+  ],
+  "author": "zekun.jin",
+  "license": "ISC",
+  "peerDependencies": {
+    "@vueuse/core": ">=10.0.0",
+    "@vueuse/motion": ">=2.0.0",
+    "vue": ">=3.0.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@vue/tsconfig": "^0.4.0",
+    "@vueuse/core": "^10.5.0",
+    "@vueuse/motion": "^2.0.0",
+    "eslint": "^8.51.0",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2",
+    "vitest": "^0.34.6",
+    "vue": "^3.3.4"
+  }
+}
