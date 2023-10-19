@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { HeroProvider } from 'hero-motion'
 import Cursor from './components/Cursor.vue'
 
-const activeKey = ref(1)
+const activeKey = ref(5)
 const isActive = i => i === activeKey.value
 
 const mapRange = (from, to) => (value) => {
