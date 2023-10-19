@@ -1,6 +1,7 @@
 import { computed, type Ref } from 'vue'
 import { tryOnBeforeUnmount, tryOnMounted, useElementBounding } from '@vueuse/core'
 import { useElementStyle, useMotion } from '@vueuse/motion'
+import { defu } from 'defu'
 import omit from 'lodash.omit'
 import type { HeroProps } from './hero'
 import { useHeroContext } from './use-hero-context'
@@ -11,11 +12,19 @@ export interface UseHeroContext {
   domRef: Ref<any>
 }
 
+export const defaultTransition = {
+  type: 'spring',
+  bounce: 0.15,
+  duration: 500
+}
+
 export const useHero = (props: UseHeroProps, { domRef }: UseHeroContext) => {
   const bounding: Record<string, number> = { x: 0, y: 0, width: 0, height: 0 }
   const context = useHeroContext()
   const curr = useElementBounding(domRef)
   const { style } = useElementStyle(domRef)
+
+  const transition = computed(() => defu(defaultTransition, props.transition ?? {}))
 
   const prev = computed({
     get () {
@@ -45,7 +54,7 @@ export const useHero = (props: UseHeroProps, { domRef }: UseHeroContext) => {
     }
 
     const initial = { ...prev.value, x: `${_x}px`, y: `${_y}px`, width: prev.value.width, height: prev.value.height }
-    const enter = { ...style, x: 0, y: 0, width: bounding.width, height: bounding.height, transition: props.transition }
+    const enter = { ...style, x: 0, y: 0, width: bounding.width, height: bounding.height, transition: transition.value }
 
     useMotion(domRef, {
       initial: omit(initial, props.ignore),

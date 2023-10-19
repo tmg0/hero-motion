@@ -7,16 +7,10 @@ interface Transition {
   duration: number
 }
 
-const defaultTransition = {
-  type: 'spring',
-  bounce: 0.15,
-  duration: 500
-}
-
 const props = {
   as: { type: String as PropType<'div'>, default: 'div' },
   layoutId: { type: [String, Number], default: undefined },
-  transition: { type: Object as PropType<Transition>, default: () => defaultTransition },
+  transition: { type: Object as PropType<Transition>, default: undefined },
   ignore: { type: Array as PropType<string[]>, default: () => [] }
 }
 

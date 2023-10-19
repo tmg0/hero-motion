@@ -35,6 +35,7 @@
     "vue": "^3.3.4"
   },
   "dependencies": {
+    "defu": "^6.1.2",
     "lodash.omit": "^4.5.0"
   }
 }
