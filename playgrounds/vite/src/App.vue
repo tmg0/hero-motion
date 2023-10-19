@@ -1,30 +1,20 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import { ref } from 'vue'
+import { HeroProvider } from 'hero-motion'
+import Cursor from './components/Cursor.vue'
+
+const activeKey = ref(1)
+const isActive = i => i === activeKey.value
+
+const bgColors = ref(['#ef4444', '#f59e0b', '#84cc16', '#10b981', '#06b6d4'])
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="p-5 flex gap-5 shadow-xl m-5 rounded-xl bg-slate-500">
+    <HeroProvider>
+      <div v-for="i in 5" :key="i" class="w-32 h-32 cursor-pointer rounded-xl bg-slate-700" @click="activeKey = i">
+        <Cursor v-if="isActive(i)" :color="bgColors[i - 1]" />
+      </div>
+    </HeroProvider>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
-
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>

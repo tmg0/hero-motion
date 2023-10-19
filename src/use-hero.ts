@@ -1,4 +1,4 @@
-import { computed, type Ref } from 'vue'
+import { computed, nextTick, unref, type Ref } from 'vue'
 import { tryOnBeforeUnmount, tryOnMounted, useElementBounding } from '@vueuse/core'
 import { useElementStyle, useMotion } from '@vueuse/motion'
 import { defu } from 'defu'
@@ -24,7 +24,7 @@ export const useHero = (props: UseHeroProps, { domRef }: UseHeroContext) => {
   const curr = useElementBounding(domRef)
   const { style } = useElementStyle(domRef)
 
-  const transition = computed(() => defu(defaultTransition, props.transition ?? {}))
+  const transition = computed(() => defu(props.transition ?? {}, defaultTransition))
 
   const prev = computed({
     get () {
@@ -37,7 +37,7 @@ export const useHero = (props: UseHeroProps, { domRef }: UseHeroContext) => {
     }
   })
 
-  tryOnMounted(() => {
+  tryOnMounted(async () => {
     bounding.x = curr.x.value
     bounding.y = curr.y.value
     bounding.width = curr.width.value
@@ -53,7 +53,9 @@ export const useHero = (props: UseHeroProps, { domRef }: UseHeroContext) => {
       _x = prev.value.x - bounding.x
     }
 
-    const initial = { ...prev.value, x: `${_x}px`, y: `${_y}px`, width: prev.value.width, height: prev.value.height }
+    await nextTick()
+
+    const initial = { ...unref(prev), x: `${_x}px`, y: `${_y}px`, width: prev.value.width, height: prev.value.height }
     const enter = { ...style, x: 0, y: 0, width: bounding.width, height: bounding.height, transition: transition.value }
 
     useMotion(domRef, {

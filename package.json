@@ -2,10 +2,16 @@
   "name": "hero-motion",
   "version": "0.0.5",
   "description": "A shared layout animations like farmer motion.",
-  "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
   "scripts": {
     "dev": "tsup --watch",
-    "dev:vite": "(cd playgrounds/vite && pnpm dev:vite)",
+    "dev:vite": "(cd playgrounds/vite && pnpm dev)",
     "build": "tsup --dts",
     "test": "vitest"
   },
