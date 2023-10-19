@@ -1,6 +1,6 @@
 import { computed, nextTick, unref, type Ref, useAttrs } from 'vue'
 import { tryOnBeforeUnmount, tryOnMounted, useElementBounding } from '@vueuse/core'
-import { useMotion } from '@vueuse/motion'
+import { useElementTransform, useMotion } from '@vueuse/motion'
 import { defu } from 'defu'
 import omit from 'lodash.omit'
 import type { HeroProps } from './hero'
@@ -15,7 +15,7 @@ export interface UseHeroContext {
 export const defaultTransition = {
   type: 'spring',
   bounce: 0,
-  duration: 500
+  duration: 1000
 }
 
 export const useHero = (props: UseHeroProps, { domRef }: UseHeroContext) => {
@@ -66,6 +66,10 @@ export const useHero = (props: UseHeroProps, { domRef }: UseHeroContext) => {
   })
 
   tryOnBeforeUnmount(() => {
+    const { transform } = useElementTransform(domRef)
+    bounding.x += transform.x as number
+    bounding.y += transform.y as number
+    bounding.z += transform.z as number
     prev.value = { ...style.value, ...bounding }
   })
 
