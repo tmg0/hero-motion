@@ -2,7 +2,7 @@ import { type PropType, defineComponent, type ExtractPropTypes, ref } from 'vue'
 import { useHero } from './use-hero'
 
 interface Transition {
-  type: 'spring'
+  type: string
   bounce: number
   duration: number
 }

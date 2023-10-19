@@ -1,7 +1,7 @@
 {
   "name": "hero-motion",
   "version": "0.0.7",
-  "description": "A shared layout animations like farmer motion.",
+  "description": "A shared layout animations for vue like farmer motion.",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
