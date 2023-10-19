@@ -1,6 +1,6 @@
-import { computed, nextTick, unref, type Ref } from 'vue'
+import { computed, nextTick, unref, type Ref, useAttrs } from 'vue'
 import { tryOnBeforeUnmount, tryOnMounted, useElementBounding } from '@vueuse/core'
-import { useElementStyle, useMotion } from '@vueuse/motion'
+import { useMotion } from '@vueuse/motion'
 import { defu } from 'defu'
 import omit from 'lodash.omit'
 import type { HeroProps } from './hero'
@@ -19,11 +19,12 @@ export const defaultTransition = {
 }
 
 export const useHero = (props: UseHeroProps, { domRef }: UseHeroContext) => {
+  const attrs = useAttrs()
   const bounding: Record<string, number> = { x: 0, y: 0, width: 0, height: 0 }
   const context = useHeroContext()
   const curr = useElementBounding(domRef)
-  const { style } = useElementStyle(domRef)
 
+  const style = computed(() => attrs?.style ?? {})
   const transition = computed(() => defu(props.transition ?? {}, defaultTransition))
 
   const prev = computed({
@@ -56,7 +57,7 @@ export const useHero = (props: UseHeroProps, { domRef }: UseHeroContext) => {
     await nextTick()
 
     const initial = { ...unref(prev), x: `${_x}px`, y: `${_y}px`, width: prev.value.width, height: prev.value.height }
-    const enter = { ...style, x: 0, y: 0, width: bounding.width, height: bounding.height, transition: transition.value }
+    const enter = { ...style.value, x: 0, y: 0, width: bounding.width, height: bounding.height, transition: transition.value }
 
     useMotion(domRef, {
       initial: omit(initial, props.ignore),
@@ -65,7 +66,7 @@ export const useHero = (props: UseHeroProps, { domRef }: UseHeroContext) => {
   })
 
   tryOnBeforeUnmount(() => {
-    prev.value = { ...style, ...bounding }
+    prev.value = { ...style.value, ...bounding }
   })
 
   return { bounding }

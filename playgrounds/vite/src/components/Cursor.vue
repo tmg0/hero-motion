@@ -1,8 +1,6 @@
 <script setup>
 import { Hero } from 'hero-motion'
 
-defineProps({ color: { type: String, default: 'tansparent' } })
-
 const emit = defineEmits(['click'])
 </script>
 
@@ -10,8 +8,9 @@ const emit = defineEmits(['click'])
   <Hero
     layout-id="cursor"
     class="w-full h-full rounded-xl cursor-pointer"
-    :style="{ backgroundColor: color }"
     :transition="{ type: 'spring', duration: 1000 }"
     @click="emit('click')"
-  />
+  >
+    123
+  </Hero>
 </template>
