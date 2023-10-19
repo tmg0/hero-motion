@@ -14,7 +14,7 @@ export interface UseHeroContext {
 
 export const defaultTransition = {
   type: 'spring',
-  bounce: 0.15,
+  bounce: 0,
   duration: 500
 }
 
