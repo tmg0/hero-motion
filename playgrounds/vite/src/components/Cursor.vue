@@ -7,10 +7,10 @@ const emit = defineEmits(['click'])
 <template>
   <Hero
     layout-id="cursor"
-    class="w-full h-full rounded-xl cursor-pointer"
+    class="w-full h-full rounded-xl cursor-pointer flex items-center justify-center"
     :transition="{ type: 'spring', duration: 1000 }"
     @click="emit('click')"
   >
-    123
+    H
   </Hero>
 </template>
