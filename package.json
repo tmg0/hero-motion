@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsup --watch",
+    "dev:vite": "(cd playgrounds/vite && pnpm dev:vite)",
     "build": "tsup --dts",
     "test": "vitest"
   },
