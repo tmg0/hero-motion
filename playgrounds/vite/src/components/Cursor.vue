@@ -11,7 +11,7 @@ const emit = defineEmits(['click'])
     layout-id="cursor"
     class="w-full h-full rounded-xl cursor-pointer"
     :style="{ backgroundColor: color }"
-    :transition="{ type: 'keyframes', duration: 3000 }"
+    :transition="{ type: 'spring', duration: 1000 }"
     @click="emit('click')"
   />
 </template>

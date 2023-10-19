@@ -10,7 +10,7 @@ interface Transition {
 const props = {
   as: { type: String as PropType<'div'>, default: 'div' },
   layoutId: { type: [String, Number], default: undefined },
-  transition: { type: Object as PropType<Transition>, default: undefined },
+  transition: { type: Object as PropType<Partial<Transition>>, default: undefined },
   ignore: { type: Array as PropType<string[]>, default: () => [] }
 }
 
