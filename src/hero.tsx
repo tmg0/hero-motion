@@ -2,9 +2,17 @@ import { type PropType, defineComponent, type ExtractPropTypes, ref } from 'vue'
 import { useHero } from './use-hero'
 
 interface Transition {
-  type: string
+  delay: number
+  repeat: number
+  repeatDelay: number
+  repeatType: 'loop' | 'mirror' | 'reverse'
+  type: 'spring' | 'keyframes'
+  stiffness: number
+  damping: number
+  mass: number
   bounce: number
   duration: number
+  ease: string
 }
 
 const props = {
