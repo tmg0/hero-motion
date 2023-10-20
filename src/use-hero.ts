@@ -5,7 +5,6 @@ import { defu } from 'defu'
 import omit from 'lodash.omit'
 import type { HeroProps } from './hero'
 import { useHeroContext } from './use-hero-context'
-import { useComputedStyle } from './utils'
 
 export type UseHeroProps = Omit<HeroProps, 'as'>
 
@@ -20,13 +19,12 @@ export const defaultTransition = {
 }
 
 export const useHero = (props: UseHeroProps, { domRef }: UseHeroContext) => {
-  let style: Record<string, string> = {}
-
   const attrs = useAttrs()
   const bounding: Record<string, number> = { x: 0, y: 0, width: 0, height: 0 }
   const context = useHeroContext()
   const curr = useElementBounding(domRef)
 
+  const style = computed(() => attrs?.style ?? {})
   const transition = computed(() => defu(props.transition ?? {}, defaultTransition))
 
   const prev = computed({
@@ -58,10 +56,8 @@ export const useHero = (props: UseHeroProps, { domRef }: UseHeroContext) => {
 
     await nextTick()
 
-    const { style: _style } = useComputedStyle(domRef, { attrs })
-    style = _style.value
     const initial = { ...unref(prev), x: `${_x}px`, y: `${_y}px`, width: prev.value.width, height: prev.value.height }
-    const enter = { ...style, x: 0, y: 0, width: bounding.width, height: bounding.height, transition: transition.value }
+    const enter = { ...style.value, x: 0, y: 0, width: bounding.width, height: bounding.height, transition: transition.value }
 
     useMotion(domRef, {
       initial: omit(initial, props.ignore),
@@ -74,7 +70,7 @@ export const useHero = (props: UseHeroProps, { domRef }: UseHeroContext) => {
     bounding.x += transform.x as number
     bounding.y += transform.y as number
     bounding.z += transform.z as number
-    prev.value = { ...style, ...bounding }
+    prev.value = { ...style.value, ...bounding }
   })
 
   return { bounding }
