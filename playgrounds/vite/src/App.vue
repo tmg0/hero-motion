@@ -15,15 +15,15 @@ const mapRange = (from, to) => (value) => {
 const fontSizeRange = mapRange([1, 9], [12, 12 * 9])
 
 const BG_COLORS = [
-  '#ef4444',
-  '#f97316',
-  '#f59e0b',
-  '#eab308',
-  '#84cc16',
-  '#22c55e',
-  '#10b981',
-  '#14b8a6',
-  '#06b6d4'
+  'bg-red-500',
+  'bg-orange-500',
+  'bg-yellow-500',
+  'bg-green-500',
+  'bg-teal-500',
+  'bg-sky-500',
+  'bg-indigo-500',
+  'bg-purple-500',
+  'bg-pink-500'
 ]
 </script>
 
@@ -32,7 +32,7 @@ const BG_COLORS = [
     <div class="p-5 grid grid-cols-3 gap-5 shadow-xl m-5 rounded-xl bg-slate-500">
       <HeroProvider>
         <div v-for="i in 9" :key="i" class="w-32 h-32 cursor-pointer rounded-xl bg-slate-700" @click="activeKey = i">
-          <Cursor v-if="isActive(i)" :style="{ background: BG_COLORS[i - 1], fontSize: `${fontSizeRange(i)}px` }" />
+          <Cursor v-if="isActive(i)" :class="BG_COLORS[i - 1]" :style="{ fontSize: `${fontSizeRange(i)}px` }" />
         </div>
       </HeroProvider>
     </div>
