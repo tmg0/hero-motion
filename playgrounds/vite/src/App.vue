@@ -30,9 +30,9 @@ const BG_COLORS = [
 <template>
   <div class="flex">
     <div class="p-5 grid grid-cols-3 gap-5 shadow-xl m-5 rounded-xl bg-slate-500">
-      <HeroProvider>
+      <HeroProvider :transition="{ duration: 3000 }">
         <div v-for="i in 9" :key="i" class="w-32 h-32 cursor-pointer rounded-xl bg-slate-700" @click="activeKey = i">
-          <Cursor v-if="isActive(i)" :class="`text-[${BG_COLORS[9 - i]}]`" :style="{ background: BG_COLORS[i - 1], fontSize: `${fontSizeRange(i)}px` }" />
+          <Cursor v-if="isActive(i)" :style="{ background: BG_COLORS[i - 1], fontSize: `${fontSizeRange(i)}px` }" />
         </div>
       </HeroProvider>
     </div>

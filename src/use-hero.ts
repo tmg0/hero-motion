@@ -8,32 +8,28 @@ import { useHeroContext } from './use-hero-context'
 
 export type UseHeroProps = Omit<HeroProps, 'as'>
 
-export interface UseHeroContext {
-  domRef: Ref<any>
-}
-
 export const defaultTransition = {
   type: 'spring',
   duration: 800
 }
 
-export const useHero = (props: UseHeroProps, { domRef }: UseHeroContext) => {
+export const useHero = (props: UseHeroProps, { domRef }: { domRef: Ref<any> }) => {
   const attrs = useAttrs()
   const bounding: Record<string, number> = { x: 0, y: 0, width: 0, height: 0 }
-  const context = useHeroContext()
+  const { layouts, props: ctxProps } = useHeroContext()
   const curr = useElementBounding(domRef)
 
   const style = computed(() => attrs?.style ?? {})
-  const transition = computed(() => defu(props.transition ?? {}, defaultTransition))
+  const transition = computed(() => defu(props.transition ?? {}, ctxProps.transition ?? {}, defaultTransition))
 
   const prev = computed({
     get () {
       if (!props.layoutId) { return {} }
-      return context.value[props.layoutId] ?? {}
+      return layouts.value[props.layoutId] ?? {}
     },
     set (value) {
       if (!props.layoutId) { return }
-      context.value[props.layoutId] = value
+      layouts.value[props.layoutId] = value
     }
   })
 
