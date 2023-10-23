@@ -14,6 +14,8 @@ export const defaultTransition = {
 }
 
 export const useHero = (props: UseHeroProps, { domRef }: { domRef: Ref<any> }) => {
+  let motionInstance: any
+
   const attrs = useAttrs()
   const bounding: Record<string, number> = { x: 0, y: 0, width: 0, height: 0 }
   const { layouts, props: ctxProps } = useHeroContext()
@@ -54,7 +56,7 @@ export const useHero = (props: UseHeroProps, { domRef }: { domRef: Ref<any> }) =
     const initial = { ...unref(prev), x: `${_x}px`, y: `${_y}px`, width: prev.value.width, height: prev.value.height }
     const enter = { ...style.value, x: 0, y: 0, width: bounding.width, height: bounding.height, transition: transition.value }
 
-    useMotion(domRef, {
+    motionInstance = useMotion(domRef, {
       initial: omit(initial, props.ignore),
       enter: omit(enter, props.ignore)
     })
@@ -65,7 +67,8 @@ export const useHero = (props: UseHeroProps, { domRef }: { domRef: Ref<any> }) =
     bounding.x += transform.x as number
     bounding.y += transform.y as number
     bounding.z += transform.z as number
-    prev.value = { ...style.value, ...bounding }
+    const motionProperties = motionInstance ? motionInstance.motionProperties : style.value
+    prev.value = { ...motionProperties, ...bounding }
   })
 
   return { bounding }
