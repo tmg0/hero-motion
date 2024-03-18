@@ -14,8 +14,8 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "tsup --watch",
-    "dev:vite": "(cd playgrounds/vite && pnpm dev)",
-    "build": "tsup --dts",
+    "play:vite": "cd playgrounds/vite && pnpm dev",
+    "build": "tsup",
     "test": "vitest"
   },
   "keywords": [
