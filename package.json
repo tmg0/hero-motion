@@ -33,19 +33,19 @@
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
-    "@types/lodash.omit": "^4.5.7",
+    "@types/lodash.omit": "^4.5.9",
     "@vue/tsconfig": "^0.4.0",
-    "@vueuse/core": "^10.5.0",
-    "@vueuse/motion": "^2.0.0",
-    "eslint": "^8.51.0",
-    "tsup": "^7.2.0",
-    "typescript": "^5.2.2",
+    "@vueuse/core": "^10.9.0",
+    "@vueuse/motion": "^2.1.0",
+    "eslint": "^8.57.0",
+    "tsup": "^7.3.0",
+    "typescript": "^5.4.2",
     "unplugin-vue-jsx": "^0.2.2",
     "vitest": "^0.34.6",
-    "vue": "^3.3.4"
+    "vue": "^3.4.21"
   },
   "dependencies": {
-    "defu": "^6.1.2",
+    "defu": "^6.1.4",
     "lodash.omit": "^4.5.0"
   }
 }
