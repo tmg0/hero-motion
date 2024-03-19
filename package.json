@@ -41,7 +41,7 @@
     "tsup": "^8.0.0",
     "typescript": "^5.4.2",
     "unplugin-vue-jsx": "^0.2.2",
-    "vitest": "^0.34.6",
+    "vitest": "^1.0.0",
     "vue": "^3.4.21"
   },
   "dependencies": {
