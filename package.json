@@ -23,7 +23,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "tsup --watch",
-    "play:vite": "cd playgrounds/vite && pnpm dev",
+    "play:vite": "cd playground/vite && pnpm dev",
     "build": "tsup",
     "test": "vitest"
   },
