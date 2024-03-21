@@ -1,5 +1,5 @@
 import { defineConfig } from 'tsup'
-import VueJSX from 'unplugin-vue-jsx'
+import VueJSX from 'unplugin-vue-jsx/esbuild'
 
 export default defineConfig(options => ({
   entry: ['src'],
@@ -9,5 +9,5 @@ export default defineConfig(options => ({
   dts: true,
   format: ['esm', 'cjs'],
   minify: !options.watch,
-  esbuildPlugins: [VueJSX.esbuild({})]
+  esbuildPlugins: [VueJSX({})]
 }))
