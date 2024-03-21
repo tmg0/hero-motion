@@ -1,10 +1,18 @@
 # Hero motion
 
-🌊 A shared layout animations for vue like farmer motion.
+[![NPM version](https://img.shields.io/npm/v/hero-motion)](https://www.npmjs.com/package/hero-motion)
 
-- 🏎 Smooth animations based on @vueuse/motion
-- 🌐 SSR Ready
-- ✨ Written in TypeScript
+🌊 A shared layout animations for [vue](https://vuejs.org/) like [framer motion](https://www.framer.com/motion/), use `layoutId` prop and components will animate from one to another.
+
+## Features
+
+🏎 Smooth animations based on [@vueuse/motion](https://motion.vueuse.org/)
+
+✨ Written in TypeScript
+
+🙌 Easy to use
+
+✅ Support most of the @vueuse/motion's props
 
 ## Installation
 
@@ -18,7 +26,7 @@ npm install hero-motion
 
 Suggest to use this component wrap your hole project, this provider will provide private context for `Hero` component.
 
-```
+```vue
 <script setup>
 import { HeroProvider } from 'hero-motion'
 </script>
@@ -32,26 +40,7 @@ import { HeroProvider } from 'hero-motion'
 
 ### Hero
 
-Component props
-
-```
-interface Props {
-  as?: string
-  layoutId?: string
-  ignore?: string
-  transition?: Transition
-}
-
-interface Transition {
-  type: string
-  bounce: number
-  duration: number
-}
-```
-
-Basic usage:
-
-```
+```vue
 <script setup>
 import { Hero } from 'hero-motion'
 </script>
@@ -61,6 +50,64 @@ import { Hero } from 'hero-motion'
 </template>
 ```
 
+## Props
+
+### `props.as`
+
+- Type: `string`
+- Default: `'div'`
+
+### `props.layoutId`
+
+- Type: `string | number`
+- Default: `undefined`
+- Required: `true`
+
+### `props.ignore`
+
+- Type: `string[]`
+- Default: `[]`
+
+### `props.transition`
+
+- Type: `Transition`
+- Default: `undefined`
+
+Transition props can be used in both `HeroProvider` and `Hero`.
+
+The configuration defined in `HeroProvider` will be used as global default value, and you do not need to re-declare it on each `Hero` components.
+
+```ts
+type Transition = {
+  delay: number
+  repeat: number
+  repeatDelay: number
+  repeatType: 'loop' | 'mirror' | 'reverse'
+  type: 'spring' | 'keyframes'
+  stiffness: number
+  damping: number
+  mass: number
+  bounce: number
+  duration: number
+  ease: string
+}
+```
+
+**Example:**
+
+```vue
+<Hero
+  as="div"
+  layout-id="cursor"
+  :ignore="['width']"
+  :transition="{
+    duration: 1000,
+    type: 'keyframes',
+    bounce: 0
+  }"
+/>
+```
+
 ## License
 
-Made with 💖
+[MIT](./LICENSE) License © 2024-PRESENT [Tamago](https://github.com/tmg0)

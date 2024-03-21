@@ -2,6 +2,15 @@
   "name": "hero-motion",
   "version": "0.0.11",
   "description": "A shared layout animations for vue like farmer motion.",
+  "license": "MIT",
+  "homepage": "https://github.com/tmg0/hero-motion#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tmg0/hero-motion.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tmg0/hero-motion/issues"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -25,7 +34,6 @@
     "vueuse"
   ],
   "author": "zekun.jin",
-  "license": "ISC",
   "peerDependencies": {
     "@vueuse/core": ">=10.0.0",
     "@vueuse/motion": ">=2.0.0",
