@@ -1,5 +1,5 @@
 import { inject, provide, ref, type Ref } from 'vue'
-import { PROVIDE_CONTEXT } from './constants'
+import { PROVIDE_CONTEXT } from '../constants'
 import type { HeroProviderProps } from './hero-provider'
 
 export interface Layout extends Record<string, any | undefined> {}

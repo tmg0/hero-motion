@@ -3,8 +3,8 @@ import { tryOnBeforeUnmount, tryOnMounted, useElementBounding } from '@vueuse/co
 import { useElementTransform, useMotion } from '@vueuse/motion'
 import { defu } from 'defu'
 import omit from 'lodash.omit'
-import type { HeroProps } from './hero'
-import { useHeroContext } from './use-hero-context'
+import type { HeroProps } from '../components/hero'
+import { useHeroContext } from '../components/use-hero-context'
 
 export type UseHeroProps = Omit<HeroProps, 'as'>
 
@@ -13,7 +13,7 @@ export const defaultTransition = {
   duration: 800
 }
 
-export const useHero = (props: UseHeroProps, { domRef }: { domRef: Ref<any> }) => {
+export const useHero = (domRef: Ref<any>, props: UseHeroProps) => {
   let motionInstance: any
 
   const attrs = useAttrs()
