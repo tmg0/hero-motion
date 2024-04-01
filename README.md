@@ -40,6 +40,10 @@ import { HeroProvider } from 'hero-motion'
 
 ### Hero
 
+You can use hero with both component and composable method.
+
+`Component`
+
 ```vue
 <script setup>
 import { Hero } from 'hero-motion'
@@ -47,6 +51,25 @@ import { Hero } from 'hero-motion'
 
 <template>
   <Hero as="div" layout-id="ID" />
+</template>
+```
+
+`Composable`
+
+```vue
+<script setup>
+import { ref } from 'vue'
+import { useHero } from 'hero-motion'
+
+const domRef = ref()
+
+useHero(domRef, {
+  layoutId: 'LAYOUT_ID'
+})
+</script>
+
+<template>
+  <div ref="domRef" />
 </template>
 ```
 

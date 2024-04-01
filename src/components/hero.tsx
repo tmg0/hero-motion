@@ -1,5 +1,5 @@
 import { type PropType, defineComponent, type ExtractPropTypes, ref } from 'vue'
-import { useHero } from './use-hero'
+import { useHero } from '../composables/use-hero'
 
 interface Transition {
   delay: number
@@ -29,7 +29,7 @@ const Hero = defineComponent({
 
   setup (props, { slots }) {
     const domRef = ref()
-    useHero(props, { domRef })
+    useHero(domRef, props)
 
     return () => (
       <props.as ref={domRef}>
