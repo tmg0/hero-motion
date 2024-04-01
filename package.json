@@ -26,6 +26,7 @@
     "play:vite": "cd playground/vite && pnpm dev",
     "build": "tsup",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "test": "vitest"
   },
   "keywords": [
