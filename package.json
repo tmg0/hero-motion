@@ -1,6 +1,6 @@
 {
   "name": "hero-motion",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A shared layout animations for vue like framer motion.",
   "license": "MIT",
   "homepage": "https://github.com/tmg0/hero-motion#readme",
