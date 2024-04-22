@@ -6,10 +6,12 @@ import Cursor from './components/Cursor.vue'
 const activeKey = ref(5)
 const isActive = i => i === activeKey.value
 
-const mapRange = (from, to) => (value) => {
-  const [fromMin, fromMax] = from
-  const [toMin, toMax] = to
-  return (value - fromMin) * (toMax - toMin) / (fromMax - fromMin) + toMin
+function mapRange(from, to) {
+  return (value) => {
+    const [fromMin, fromMax] = from
+    const [toMin, toMax] = to
+    return (value - fromMin) * (toMax - toMin) / (fromMax - fromMin) + toMin
+  }
 }
 
 const fontSizeRange = mapRange([1, 9], [12, 12 * 9])
@@ -23,7 +25,7 @@ const BG_COLORS = [
   '#22c55e',
   '#10b981',
   '#14b8a6',
-  '#06b6d4'
+  '#06b6d4',
 ]
 </script>
 

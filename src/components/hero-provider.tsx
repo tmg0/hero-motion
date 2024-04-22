@@ -1,5 +1,5 @@
-import { defineComponent, ref, type ExtractPropTypes, type PropType } from 'vue'
-import { useProvideHeroContext, type HeroContext } from './use-hero-context'
+import { type ExtractPropTypes, type PropType, defineComponent, ref } from 'vue'
+import { type HeroContext, useProvideHeroContext } from './use-hero-context'
 
 interface Transition {
   delay: number
@@ -16,7 +16,7 @@ interface Transition {
 }
 
 const props = {
-  transition: { type: Object as PropType<Partial<Transition>>, default: undefined }
+  transition: { type: Object as PropType<Partial<Transition>>, default: undefined },
 }
 
 export type HeroProviderProps = ExtractPropTypes<typeof props>
@@ -24,7 +24,7 @@ export type HeroProviderProps = ExtractPropTypes<typeof props>
 const HeroProvider = defineComponent({
   props,
 
-  setup (props, { slots }) {
+  setup(props, { slots }) {
     const context: HeroContext = { layouts: ref({}), props }
     useProvideHeroContext(context)
 
@@ -33,7 +33,7 @@ const HeroProvider = defineComponent({
         {slots.default?.()}
       </>
     )
-  }
+  },
 })
 
 export { HeroProvider }

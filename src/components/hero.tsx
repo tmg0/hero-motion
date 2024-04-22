@@ -1,4 +1,4 @@
-import { type PropType, defineComponent, type ExtractPropTypes, ref } from 'vue'
+import { type ExtractPropTypes, type PropType, defineComponent, ref } from 'vue'
 import { useHero } from '../composables/use-hero'
 
 interface Transition {
@@ -19,7 +19,7 @@ const props = {
   as: { type: String as PropType<'div'>, default: 'div' },
   layoutId: { type: [String, Number], default: undefined },
   transition: { type: Object as PropType<Partial<Transition>>, default: undefined },
-  ignore: { type: Array as PropType<string[]>, default: () => [] }
+  ignore: { type: Array as PropType<string[]>, default: () => [] },
 }
 
 export type HeroProps = ExtractPropTypes<typeof props>
@@ -27,7 +27,7 @@ export type HeroProps = ExtractPropTypes<typeof props>
 const Hero = defineComponent({
   props,
 
-  setup (props, { slots }) {
+  setup(props, { slots }) {
     const domRef = ref()
     useHero(domRef, props)
 
@@ -36,7 +36,7 @@ const Hero = defineComponent({
         {slots.default?.()}
       </props.as>
     )
-  }
+  },
 })
 
 export { Hero }

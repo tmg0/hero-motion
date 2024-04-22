@@ -1,4 +1,4 @@
-import { computed, nextTick, unref, type Ref, useAttrs } from 'vue'
+import { type Ref, computed, nextTick, unref, useAttrs } from 'vue'
 import { tryOnBeforeUnmount, tryOnMounted, useElementBounding } from '@vueuse/core'
 import { useElementTransform, useMotion } from '@vueuse/motion'
 import { defu } from 'defu'
@@ -10,10 +10,10 @@ export type UseHeroProps = Omit<HeroProps, 'as'>
 
 export const defaultTransition = {
   type: 'spring',
-  duration: 800
+  duration: 800,
 }
 
-export const useHero = (domRef: Ref<any>, props: UseHeroProps) => {
+export function useHero(domRef: Ref<any>, props: UseHeroProps) {
   let motionInstance: any
 
   const attrs = useAttrs()
@@ -25,14 +25,16 @@ export const useHero = (domRef: Ref<any>, props: UseHeroProps) => {
   const transition = computed(() => defu(props.transition ?? {}, ctxProps.transition ?? {}, defaultTransition))
 
   const prev = computed({
-    get () {
-      if (!props.layoutId) { return {} }
+    get() {
+      if (!props.layoutId)
+        return {}
       return layouts.value[props.layoutId] ?? {}
     },
-    set (value) {
-      if (!props.layoutId) { return }
+    set(value) {
+      if (!props.layoutId)
+        return
       layouts.value[props.layoutId] = value
-    }
+    },
   })
 
   tryOnMounted(async () => {
@@ -42,14 +44,12 @@ export const useHero = (domRef: Ref<any>, props: UseHeroProps) => {
     bounding.height = curr.height.value
 
     let _y = 0
-    if (prev.value.y) {
+    if (prev.value.y)
       _y = prev.value.y - bounding.y
-    }
 
     let _x = 0
-    if (prev.value.x) {
+    if (prev.value.x)
       _x = prev.value.x - bounding.x
-    }
 
     await nextTick()
 
@@ -58,7 +58,7 @@ export const useHero = (domRef: Ref<any>, props: UseHeroProps) => {
 
     motionInstance = useMotion(domRef, {
       initial: omit(initial, props.ignore),
-      enter: omit(enter, props.ignore)
+      enter: omit(enter, props.ignore),
     })
   })
 

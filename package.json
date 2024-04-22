@@ -2,6 +2,7 @@
   "name": "hero-motion",
   "version": "0.2.0",
   "description": "A shared layout animations for vue like framer motion.",
+  "author": "zekun.jin",
   "license": "MIT",
   "homepage": "https://github.com/tmg0/hero-motion#readme",
   "repository": {
@@ -11,11 +12,17 @@
   "bugs": {
     "url": "https://github.com/tmg0/hero-motion/issues"
   },
+  "keywords": [
+    "animation",
+    "vue",
+    "motion",
+    "vueuse"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs"
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
     }
   },
   "main": "./dist/index.cjs",
@@ -29,19 +36,17 @@
     "lint:fix": "eslint . --fix",
     "test": "vitest"
   },
-  "keywords": [
-    "animation",
-    "vue",
-    "motion",
-    "vueuse"
-  ],
-  "author": "zekun.jin",
   "peerDependencies": {
     "@vueuse/core": ">=10.0.0",
     "@vueuse/motion": ">=2.0.0",
     "vue": ">=3.0.0"
   },
+  "dependencies": {
+    "defu": "^6.1.4",
+    "lodash.omit": "^4.5.0"
+  },
   "devDependencies": {
+    "@antfu/eslint-config": "^2.15.0",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@types/lodash.omit": "^4.5.9",
     "@vue/tsconfig": "^0.5.0",
@@ -53,9 +58,5 @@
     "unplugin-vue-jsx": "^0.3.0",
     "vitest": "^1.0.0",
     "vue": "^3.4.21"
-  },
-  "dependencies": {
-    "defu": "^6.1.4",
-    "lodash.omit": "^4.5.0"
   }
 }

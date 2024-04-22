@@ -101,7 +101,7 @@ Transition props can be used in both `HeroProvider` and `Hero`.
 The configuration defined in `HeroProvider` will be used as global default value, and you do not need to re-declare it on each `Hero` components.
 
 ```ts
-type Transition = {
+interface Transition {
   delay: number
   repeat: number
   repeatDelay: number
