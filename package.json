@@ -52,7 +52,7 @@
     "@vue/tsconfig": "^0.5.0",
     "@vueuse/core": "^10.9.0",
     "@vueuse/motion": "^2.1.0",
-    "eslint": "^8.57.0",
+    "eslint": "^9.0.0",
     "eslint-plugin-oxlint": "^0.2.9",
     "oxlint": "^0.3.1",
     "tsup": "^8.0.0",
