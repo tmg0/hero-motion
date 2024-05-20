@@ -37,8 +37,8 @@ importers:
         specifier: ^9.0.0
         version: 9.3.0
       eslint-plugin-oxlint:
-        specifier: ^0.2.9
-        version: 0.2.9
+        specifier: ^0.3.0
+        version: 0.3.0
       oxlint:
         specifier: ^0.3.1
         version: 0.3.2
@@ -3290,8 +3290,10 @@ packages:
       semver: 6.3.1
     dev: true
 
-  /eslint-plugin-oxlint@0.2.9:
-    resolution: {integrity: sha512-K3aILcHVSSbjJ5W7YxdbMLmoB9G4GHdbDXl9qlPwuWF69BVV2e7/Bpy9osLT+bylv8Y+J6WltsqwXL/Z7sxMgA==}
+  /eslint-plugin-oxlint@0.3.0:
+    resolution: {integrity: sha512-bIzbVVpeeP1PU85Ewn3GGtY7pqG0jntlXvLc/bQyMQr7NYLl1rE6WPKkIFtj58yhmI2wGR4scN4G+z9/E/6AMQ==}
+    dependencies:
+      scule: 1.3.0
     dev: true
 
   /eslint-plugin-perfectionist@2.9.0(eslint@9.3.0)(typescript@5.4.5)(vue-eslint-parser@9.4.2):
@@ -5357,7 +5359,6 @@ packages:
   /scule@1.3.0:
     resolution: {integrity: sha512-6FtHJEvt+pVMIB9IBY+IcCJ6Z5f1iQnytgyfKMhDKgmzYG+TeH/wx1y3l27rshSbLiSanrR9ffZDrEsmjlQF2g==}
     requiresBuild: true
-    optional: true
 
   /semver@5.7.2:
     resolution: {integrity: sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==}
