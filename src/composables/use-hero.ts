@@ -4,7 +4,7 @@ import { useElementTransform, useMotion } from '@vueuse/motion'
 import { defu } from 'defu'
 import omit from 'lodash.omit'
 import type { HeroProps } from '../components/hero'
-import { useHeroContext } from '../components/use-hero-context'
+import { useHeroContext } from '../composables/use-hero-context'
 
 export type UseHeroProps = Omit<HeroProps, 'as'>
 
