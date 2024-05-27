@@ -9,8 +9,9 @@ import { useHeroContext } from '../composables/use-hero-context'
 export type UseHeroProps = Omit<HeroProps, 'as'>
 
 export const defaultTransition = {
-  type: 'keyframes',
-  duration: 300,
+  type: 'spring',
+  stiffness: 600,
+  damping: 35,
 }
 
 export function useHero(domRef: Ref<any>, props: UseHeroProps) {
