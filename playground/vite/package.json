@@ -12,7 +12,8 @@
     "@vueuse/core": "^10.5.0",
     "@vueuse/motion": "^2.0.0",
     "hero-motion": "workspace:^",
-    "vue": "^3.3.4"
+    "vue": "^3.3.4",
+    "vue-router": "^4.3.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.6.2",

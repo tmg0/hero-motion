@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { ref } from 'vue'
 import { HeroProvider } from 'hero-motion'
 import { Tab, Tabs } from './components/Tabs'
@@ -12,7 +12,7 @@ function onSelect(value) {
 
 <template>
   <HeroProvider>
-    <div class="p-6">
+    <div class="p-6 flex flex-col gap-3">
       <Tabs>
         <Tab :is-active="activeTab === 'A'" @click="onSelect('A')">
           TabA
@@ -21,6 +21,8 @@ function onSelect(value) {
           TabB
         </Tab>
       </Tabs>
+
+      <RouterView />
     </div>
   </HeroProvider>
 </template>
