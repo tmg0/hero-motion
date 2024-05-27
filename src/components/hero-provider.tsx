@@ -1,5 +1,5 @@
 import { type ExtractPropTypes, type PropType, defineComponent, ref } from 'vue'
-import { type HeroContext, useProvideHeroContext } from './use-hero-context'
+import { type HeroContext, useProvideHeroContext } from '../composables/use-hero-context'
 
 interface Transition {
   delay: number
