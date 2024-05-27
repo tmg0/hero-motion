@@ -9,8 +9,8 @@ import { useHeroContext } from '../composables/use-hero-context'
 export type UseHeroProps = Omit<HeroProps, 'as'>
 
 export const defaultTransition = {
-  type: 'spring',
-  duration: 800,
+  type: 'keyframes',
+  duration: 300,
 }
 
 export function useHero(domRef: Ref<any>, props: UseHeroProps) {
@@ -54,7 +54,7 @@ export function useHero(domRef: Ref<any>, props: UseHeroProps) {
     await nextTick()
 
     const initial = { ...unref(prev), x: `${_x}px`, y: `${_y}px`, width: prev.value.width, height: prev.value.height }
-    const enter = { ...style.value, x: 0, y: 0, width: bounding.width, height: bounding.height, transition: transition.value }
+    const enter = { ...style.value, x: 0, y: 0, width: bounding.width, height: bounding.height, transition: unref(transition) }
 
     motionInstance = useMotion(domRef, {
       initial: omit(initial, props.ignore),
