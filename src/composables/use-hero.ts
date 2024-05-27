@@ -5,12 +5,14 @@ import { defu } from 'defu'
 import omit from 'lodash.omit'
 import type { HeroProps } from '../components/hero'
 import { useHeroContext } from '../composables/use-hero-context'
+import type { Transition } from '../types'
 
 export type UseHeroProps = Omit<HeroProps, 'as'>
 
 export const defaultTransition = {
-  type: 'keyframes',
-  duration: 300,
+  type: 'spring',
+  stiffness: 600,
+  damping: 35,
 }
 
 export function useHero(domRef: Ref<any>, props: UseHeroProps) {
@@ -58,7 +60,7 @@ export function useHero(domRef: Ref<any>, props: UseHeroProps) {
 
     motionInstance = useMotion(domRef, {
       initial: omit(initial, props.ignore),
-      enter: omit(enter, props.ignore),
+      enter: omit(enter, props.ignore) as Transition,
     })
   })
 
