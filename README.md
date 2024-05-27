@@ -131,6 +131,33 @@ const emit = defineEmits(['click'])
 </template>
 ```
 
+### Transition Across Different Pages
+
+`hero-motion` support tansition across different pages, even when components are under different routes, ensure smooth transitions when navigating between them.
+
+See the [Avatar]('./playground/vite/components/Avatar.vue') component in the playground:
+
+```vue
+<script setup lang="ts">
+import { Hero } from 'hero-motion'
+
+defineProps<{
+  id: number | string
+  size?: number | string
+}>()
+</script>
+
+<template>
+  <Hero :layout-id="`avatar:${id}`" :style="{ width: `${size}px`, height: `${size}px` }">
+    <img>
+  </Hero>
+</template>
+```
+
+We can see that the `Avatar` component is used in both the list and detail pages， and there will be a transition effect between avatars with the same ID.
+
+`hero-motion` will automatically handle transitions between positions and sizes.
+
 ## Props
 
 ### `props.as`
