@@ -19,7 +19,7 @@ const user = computed(() => data.value.find(({ username }) => username === route
     <div class="flex gap-6">
       <div class="text-sm flex flex-col justify-between w-36">
         <div>Username: {{ user.username }}</div>
-        <div>Name: {{ user.name }}</div>
+        <div>Name: {{ user.name || '--' }}</div>
         <div>Twitter: {{ user.twitter || '--' }}</div>
       </div>
 
