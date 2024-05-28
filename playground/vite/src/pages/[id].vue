@@ -1,13 +1,13 @@
 <script setup>
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useFetch } from '@vueuse/core'
+import { useContributor } from '../composables/useContributor'
 import Avatar from '../components/Avatar.vue'
 
 const route = useRoute()
 const router = useRouter()
-const { data } = useFetch(`https://ungh.cc/users/${route.params.id}`).get().json()
-const user = computed(() => data.value?.user ?? {})
+const { data } = useContributor()
+const user = computed(() => data.value.find(({ username }) => username === route.params.id) ?? {})
 </script>
 
 <template>
@@ -23,7 +23,7 @@ const user = computed(() => data.value?.user ?? {})
         <div>Twitter: {{ user.twitter || '--' }}</div>
       </div>
 
-      <Avatar :id="route.params.id" size="80" />
+      <Avatar :id="route.params.id" size="80" :src="user.avatar" />
     </div>
   </div>
 </template>
