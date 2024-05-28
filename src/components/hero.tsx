@@ -14,9 +14,9 @@ export type HeroProps = ExtractPropTypes<typeof props>
 const Hero = defineComponent({
   props,
 
-  setup(props, { slots }) {
+  setup(props, { slots, emit }) {
     const domRef = ref()
-    useHero(domRef, props)
+    useHero(domRef, props, emit)
 
     return () => (
       <props.as ref={domRef}>

@@ -15,7 +15,7 @@ export const defaultTransition = {
   damping: 35,
 }
 
-export function useHero(domRef: Ref<any>, props: UseHeroProps) {
+export function useHero(domRef: Ref<any>, props: UseHeroProps, emit: any) {
   let motionInstance: any
 
   const attrs = useAttrs()
@@ -55,8 +55,16 @@ export function useHero(domRef: Ref<any>, props: UseHeroProps) {
 
     await nextTick()
 
+    const _transition = {
+      ...unref(transition),
+
+      onComplete() {
+        emit('complete')
+      },
+    }
+
     const initial = { ...unref(prev), x: `${_x}px`, y: `${_y}px`, width: prev.value.width, height: prev.value.height }
-    const enter = { ...style.value, x: 0, y: 0, width: bounding.width, height: bounding.height, transition: unref(transition) }
+    const enter = { ...style.value, x: 0, y: 0, width: bounding.width, height: bounding.height, transition: _transition }
 
     motionInstance = useMotion(domRef, {
       initial: omit(initial, props.ignore),

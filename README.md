@@ -216,6 +216,13 @@ interface Transition {
 />
 ```
 
+## Emit
+
+### `complete`
+
+- Type: `() => void`
+- Default: `() => {}`
+
 ## License
 
 [MIT](./LICENSE) License © 2024-PRESENT [Tamago](https://github.com/tmg0)
