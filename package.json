@@ -42,13 +42,11 @@
     "vue": ">=3.0.0"
   },
   "dependencies": {
-    "defu": "^6.1.4",
-    "lodash.omit": "^4.5.0"
+    "defu": "^6.1.4"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.15.0",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
-    "@types/lodash.omit": "^4.5.9",
     "@vue/tsconfig": "^0.5.0",
     "@vueuse/core": "^10.9.0",
     "@vueuse/motion": "^2.1.0",

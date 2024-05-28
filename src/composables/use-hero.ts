@@ -2,10 +2,8 @@ import { type Ref, computed, nextTick, unref, useAttrs } from 'vue'
 import { tryOnBeforeUnmount, tryOnMounted, useElementBounding } from '@vueuse/core'
 import { useElementTransform, useMotion } from '@vueuse/motion'
 import { defu } from 'defu'
-import omit from 'lodash.omit'
 import type { HeroProps } from '../components/hero'
 import { useHeroContext } from '../composables/use-hero-context'
-import type { Transition } from '../types'
 
 export type UseHeroProps = Omit<HeroProps, 'as'>
 
@@ -13,6 +11,17 @@ export const defaultTransition = {
   type: 'spring',
   stiffness: 600,
   damping: 35,
+}
+
+function omit<T extends Record<string, any>, K extends keyof T>(source: T, keys: K[] = []): Omit<T, K> {
+  if (!keys.length)
+    return source
+  const picks: any = {}
+  for (const key in source) {
+    if (!keys.includes(key as unknown as K))
+      picks[key] = source[key]
+  }
+  return picks as Omit<T, K>
 }
 
 export function useHero(domRef: Ref<any>, props: UseHeroProps, emit: any) {
@@ -67,8 +76,8 @@ export function useHero(domRef: Ref<any>, props: UseHeroProps, emit: any) {
     const enter = { ...style.value, x: 0, y: 0, width: bounding.width, height: bounding.height, transition: _transition }
 
     motionInstance = useMotion(domRef, {
-      initial: omit(initial, props.ignore),
-      enter: omit(enter, props.ignore) as Transition,
+      initial: omit(initial, props.ignore as any),
+      enter: omit(enter, props.ignore as any),
     })
   })
 
