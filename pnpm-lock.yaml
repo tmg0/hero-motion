@@ -26,7 +26,7 @@ importers:
         version: 10.10.0(vue@3.4.27(typescript@5.4.5))
       '@vueuse/motion':
         specifier: ^2.1.0
-        version: 2.2.1(rollup@4.17.2)(vue@3.4.27(typescript@5.4.5))
+        version: 2.2.3(rollup@4.17.2)(vue@3.4.27(typescript@5.4.5))
       eslint:
         specifier: ^9.0.0
         version: 9.3.0
@@ -62,7 +62,7 @@ importers:
         version: 10.10.0(vue@3.4.27(typescript@5.4.5))
       '@vueuse/motion':
         specifier: ^2.0.0
-        version: 2.2.1(rollup@4.17.2)(vue@3.4.27(typescript@5.4.5))
+        version: 2.2.3(rollup@4.17.2)(vue@3.4.27(typescript@5.4.5))
       hero-motion:
         specifier: workspace:^
         version: link:../..
@@ -1244,8 +1244,8 @@ packages:
   '@vueuse/metadata@10.10.0':
     resolution: {integrity: sha512-UNAo2sTCAW5ge6OErPEHb5z7NEAg3XcO9Cj7OK45aZXfLLH1QkexDcZD77HBi5zvEiLOm1An+p/4b5K3Worpug==}
 
-  '@vueuse/motion@2.2.1':
-    resolution: {integrity: sha512-ltOL0lPzL9IViaKfD0Ncg0I61fTJ+Ex5m4J3G/TKT6OOOnG+HhMuE6Fqkdcwhm/Kq6PtC0Dvb+dQqwFDClw4Ww==}
+  '@vueuse/motion@2.2.3':
+    resolution: {integrity: sha512-QsS9P7MDKFF2j4eDPuo6lezUDPE7MQp4+unBeR2Ym8RkhtMEw/oVbnHPHL986rsmnnlUZkHVSv5kKoHJzjbtmQ==}
     peerDependencies:
       vue: '>=3.0.0'
 
@@ -4762,7 +4762,7 @@ snapshots:
 
   '@vueuse/metadata@10.10.0': {}
 
-  '@vueuse/motion@2.2.1(rollup@4.17.2)(vue@3.4.27(typescript@5.4.5))':
+  '@vueuse/motion@2.2.3(rollup@4.17.2)(vue@3.4.27(typescript@5.4.5))':
     dependencies:
       '@vueuse/core': 10.10.0(vue@3.4.27(typescript@5.4.5))
       '@vueuse/shared': 10.10.0(vue@3.4.27(typescript@5.4.5))
