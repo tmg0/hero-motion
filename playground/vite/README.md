@@ -2,7 +2,13 @@
 
 [![NPM version](https://img.shields.io/npm/v/hero-motion)](https://www.npmjs.com/package/hero-motion)
 
-`hero-motion` is typically used to optimize code structure, and here are some examples. You can also run `pnpm play:vite` in the root dir locally.
+`hero-motion` is typically used to optimize code structure, and here are some examples.
+
+You can also run `pnpm play:vite` in the root dir on your local environment.
+
+- `Tabs Component`
+
+- `Transition Across Different Pages`
 
 ## Tabs Component
 
@@ -52,7 +58,7 @@ const emit = defineEmits(['click'])
 </template>
 ```
 
-### Transition Across Different Pages
+## Transition Across Different Pages
 
 `hero-motion` support tansition across different pages, even when components are under different routes, ensure smooth transitions when navigating between them.
 
