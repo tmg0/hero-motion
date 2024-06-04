@@ -75,7 +75,7 @@ useHero(domRef, {
 
 ## Playground
 
-See [playground]('./playground/vite/README.md').
+See [playground](./playground/vite/README.md).
 
 ## Props
 
