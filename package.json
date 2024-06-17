@@ -56,7 +56,7 @@
     "tsup": "^8.0.0",
     "typescript": "^5.4.2",
     "unplugin-oxlint": "^0.6.0",
-    "unplugin-vue-jsx": "^0.3.0",
+    "unplugin-vue-jsx": "^0.4.0",
     "vitest": "^1.0.0",
     "vue": "^3.4.21"
   }
