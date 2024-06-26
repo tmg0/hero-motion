@@ -61,6 +61,6 @@
     "vue": "^3.4.21"
   },
   "stackblitz": {
-    "startCommand": "pnpm play:vite"
+    "startCommand": "pnpm build && pnpm play:vite"
   }
 }
