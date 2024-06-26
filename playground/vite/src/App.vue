@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { HeroProvider } from 'hero-motion'
 import { Tab, Tabs } from './components/Tabs'
+import Box from './components/Box.vue'
 
 const activeTab = ref('A')
 
@@ -23,6 +24,8 @@ function onSelect(value) {
       </Tabs>
 
       <RouterView />
+
+      <Box />
     </div>
   </HeroProvider>
 </template>
