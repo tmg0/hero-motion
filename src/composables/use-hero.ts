@@ -72,7 +72,7 @@ export function useHero(domRef: Ref<any>, props: UseHeroProps, emit: any) {
       },
     }
 
-    const initial = { ...unref(prev), x: `${_x}px`, y: `${_y}px`, width: prev.value.width, height: prev.value.height }
+    const initial = { ...unref(prev), x: _x, y: _y, width: prev.value.width, height: prev.value.height }
     const enter = { ...style.value, x: 0, y: 0, width: bounding.width, height: bounding.height, transition: _transition }
 
     motionInstance = useMotion(domRef, {
@@ -83,9 +83,9 @@ export function useHero(domRef: Ref<any>, props: UseHeroProps, emit: any) {
 
   tryOnBeforeUnmount(() => {
     const { transform } = useElementTransform(domRef)
-    bounding.x += transform.x as number
-    bounding.y += transform.y as number
-    bounding.z += transform.z as number
+    bounding.x += transform.x as number ?? 0
+    bounding.y += transform.y as number ?? 0
+    bounding.z += transform.z as number ?? 0
     const motionProperties = motionInstance ? motionInstance.motionProperties : style.value
     prev.value = { ...motionProperties, ...bounding }
   })
