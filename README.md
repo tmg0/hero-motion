@@ -4,6 +4,8 @@
 
 🌊 A shared layout animations for [vue](https://vuejs.org/) like [framer motion](https://www.framer.com/motion/), use `layoutId` prop and components will animate from one to another.
 
+- [Demo](https://stackblitz.com/~/github.com/tmg0/hero-motion)
+
 ## Features
 
 🏎 Smooth animations based on [@vueuse/motion](https://motion.vueuse.org/)
