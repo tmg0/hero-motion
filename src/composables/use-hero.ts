@@ -49,8 +49,8 @@ export function useHero(domRef: Ref<any>, props: UseHeroProps, emit: any) {
   })
 
   tryOnMounted(async () => {
-    bounding.x = curr.x.value
-    bounding.y = curr.y.value
+    bounding.x = curr.x.value + curr.width.value / 2
+    bounding.y = curr.y.value + curr.height.value / 2
     bounding.width = curr.width.value
     bounding.height = curr.height.value
 
@@ -72,8 +72,11 @@ export function useHero(domRef: Ref<any>, props: UseHeroProps, emit: any) {
       },
     }
 
-    const initial = { ...unref(prev), x: _x, y: _y, width: prev.value.width, height: prev.value.height }
-    const enter = { ...style.value, x: 0, y: 0, width: bounding.width, height: bounding.height, transition: _transition }
+    const size = { width: bounding.width, height: bounding.height }
+    const scale = { x: prev.value.width / size.width, y: prev.value.height / size.height }
+
+    const initial = { ...unref(prev), x: _x, y: _y, scaleX: scale.x, scaleY: scale.y, ...size }
+    const enter = { ...style.value, x: 0, y: 0, scaleX: 1, scaleY: 1, ...size, transition: _transition }
 
     motionInstance = useMotion(domRef, {
       initial: omit(initial, props.ignore as any),
