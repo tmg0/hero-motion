@@ -31,8 +31,8 @@ importers:
         specifier: ^9.0.0
         version: 9.5.0
       eslint-plugin-oxlint:
-        specifier: ^0.4.0
-        version: 0.4.0
+        specifier: ^0.5.0
+        version: 0.5.0
       oxlint:
         specifier: ^0.5.0
         version: 0.5.0
@@ -2915,8 +2915,8 @@ packages:
       semver: 6.3.1
     dev: true
 
-  /eslint-plugin-oxlint@0.4.0:
-    resolution: {integrity: sha512-nSSfz/lbG0AAAX99lXmVAXnqAtCK4wrigVB+Etf32YETOKlfNgmtY/7EkP3OzIIf4VI2FSH+7W6+oBRqI2Bi4A==}
+  /eslint-plugin-oxlint@0.5.0:
+    resolution: {integrity: sha512-DFPxJTUSe8XdvbOsvpAyzUVNmLHnqpNLQFAH2bJo+Mxkb59s50/EKn1nCukrzMAG34nq02Iu4D+0MuUr9oHWhw==}
     dependencies:
       scule: 1.3.0
     dev: true
