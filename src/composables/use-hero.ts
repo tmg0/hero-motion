@@ -30,7 +30,7 @@ export function useHero(domRef: Ref<any>, props: UseHeroProps, emit: any) {
   const attrs = useAttrs()
   const bounding: Record<string, number> = { x: 0, y: 0, width: 0, height: 0 }
   const { layouts, props: ctxProps } = useHeroContext()
-  const curr = useElementBounding(domRef)
+  const { height, width, x, y } = useElementBounding(domRef)
 
   const style = computed(() => attrs?.style ?? {})
   const transition = computed(() => defu(props.transition ?? {}, ctxProps.transition ?? {}, defaultTransition))
@@ -49,10 +49,10 @@ export function useHero(domRef: Ref<any>, props: UseHeroProps, emit: any) {
   })
 
   tryOnMounted(async () => {
-    bounding.x = curr.x.value + curr.width.value / 2
-    bounding.y = curr.y.value + curr.height.value / 2
-    bounding.width = curr.width.value
-    bounding.height = curr.height.value
+    bounding.x = x.value + width.value / 2
+    bounding.y = y.value + height.value / 2
+    bounding.width = width.value
+    bounding.height = height.value
 
     let _y = 0
     if (prev.value.y)
@@ -86,11 +86,16 @@ export function useHero(domRef: Ref<any>, props: UseHeroProps, emit: any) {
 
   tryOnBeforeUnmount(() => {
     const { transform } = useElementTransform(domRef)
-    bounding.x += transform.x as number ?? 0
-    bounding.y += transform.y as number ?? 0
-    bounding.z += transform.z as number ?? 0
+    bounding.x = bounding.x + (transform.x as number ?? 0)
+    bounding.y = bounding.y + (transform.y as number ?? 0)
+    bounding.z = bounding.z + (transform.x as number ?? 0)
     const motionProperties = motionInstance ? motionInstance.motionProperties : style.value
-    prev.value = { ...motionProperties, ...bounding }
+    const _props = { ...motionProperties, ...bounding }
+    if (transform.scaleX)
+      _props.width = _props.width * (transform.scaleX as number ?? 1)
+    if (transform.scaleY)
+      _props.height = _props.height * (transform.scaleY as number ?? 1)
+    prev.value = _props
   })
 
   return { bounding }
