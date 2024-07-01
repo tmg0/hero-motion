@@ -5,7 +5,6 @@ import { Tab, Tabs } from './components/Tabs'
 
 const activeTab = ref('A')
 const isLarge = ref(false)
-const routerViewRef = ref()
 
 function onSelect(value) {
   activeTab.value = value
@@ -35,7 +34,7 @@ function onSelect(value) {
       </div>
 
       <div class="p-4 bg-gradient-to-r from-sky-500 to-indigo-500 rounded-xl">
-        <RouterView ref="routerViewRef" />
+        <RouterView />
       </div>
 
       <div class="font-bold">
@@ -48,8 +47,8 @@ function onSelect(value) {
             Toggle
           </button>
 
-          <Hero v-if="isLarge" as="div" layout-id="box" :dependencies="[routerViewRef]" class="w-24 h-24 rounded-xl cursor-pointer" :style="{ background: '#f43f5e' }" @click="isLarge = !isLarge" />
-          <Hero v-else as="div" layout-id="box" :dependencies="[routerViewRef]" class="w-12 h-12 rounded-xl cursor-pointer" :style="{ background: '#2dd4bf' }" @click="isLarge = !isLarge" />
+          <Hero v-if="isLarge" as="div" layout-id="box" class="w-24 h-24 rounded-xl cursor-pointer" :style="{ background: '#f43f5e' }" @click="isLarge = !isLarge" />
+          <Hero v-else as="div" layout-id="box" class="w-12 h-12 rounded-xl cursor-pointer" :style="{ background: '#2dd4bf' }" @click="isLarge = !isLarge" />
         </div>
       </div>
     </div>

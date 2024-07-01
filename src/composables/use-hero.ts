@@ -30,7 +30,7 @@ export function useHero(domRef: Ref<any>, props: UseHeroProps, emit: any) {
   const attrs = useAttrs()
   const bounding: Record<string, number> = { x: 0, y: 0, width: 0, height: 0 }
   const { layouts, props: ctxProps } = useHeroContext()
-  const { height, width, x, y } = useElementBounding(domRef)
+  const { height, width, x, y, update } = useElementBounding(domRef)
 
   const style = computed(() => attrs?.style ?? {})
   const transition = computed(() => defu(props.transition ?? {}, ctxProps.transition ?? {}, defaultTransition))
@@ -48,7 +48,9 @@ export function useHero(domRef: Ref<any>, props: UseHeroProps, emit: any) {
     },
   })
 
-  tryOnMounted(() => {
+  tryOnMounted(setupAnimation)
+
+  function setupAnimation() {
     bounding.x = x.value + width.value / 2
     bounding.y = y.value + height.value / 2
     bounding.width = width.value
@@ -80,9 +82,12 @@ export function useHero(domRef: Ref<any>, props: UseHeroProps, emit: any) {
       initial: omit(initial, props.ignore as any),
       enter: omit(enter, props.ignore as any),
     })
-  })
+  }
 
   tryOnBeforeUnmount(() => {
+    update()
+    bounding.x = x.value + width.value / 2
+    bounding.y = y.value + height.value / 2
     const { transform } = useElementTransform(domRef)
     bounding.x = bounding.x + (transform.x as number ?? 0)
     bounding.y = bounding.y + (transform.y as number ?? 0)
@@ -96,5 +101,5 @@ export function useHero(domRef: Ref<any>, props: UseHeroProps, emit: any) {
     previous.value = _props
   })
 
-  return { bounding }
+  return { bounding, x, y }
 }
