@@ -1,9 +1,9 @@
 import { type ExtractPropTypes, type PropType, computed, defineComponent, ref } from 'vue'
 import { useHero } from '../composables/use-hero'
-import type { HTMLTag, Transition } from '../types'
+import type { Transition } from '../types'
 
 const props = {
-  as: { type: String as PropType<HTMLTag>, default: 'div' },
+  as: { type: String as PropType<keyof HTMLElementTagNameMap>, default: 'div' },
   layoutId: { type: [String, Number], default: undefined },
   transition: { type: Object as PropType<Partial<Transition>>, default: undefined },
   ignore: { type: Array as PropType<string[]>, default: () => [] },
