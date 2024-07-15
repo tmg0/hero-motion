@@ -1,4 +1,4 @@
-import { type ExtractPropTypes, type PropType, defineComponent, ref } from 'vue'
+import { type ExtractPropTypes, type PropType, computed, defineComponent, ref } from 'vue'
 import { useHero } from '../composables/use-hero'
 import type { HTMLTag, Transition } from '../types'
 
@@ -16,7 +16,13 @@ const Hero = defineComponent({
 
   setup(props, { slots, emit }) {
     const domRef = ref()
-    useHero(domRef, props, emit)
+    const options = computed(() => ({ ...props, onComplete }))
+
+    function onComplete() {
+      emit('complete')
+    }
+
+    useHero(domRef, options)
 
     return () => (
       <props.as ref={domRef}>

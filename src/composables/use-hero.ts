@@ -1,11 +1,13 @@
-import { type Ref, computed, unref, useAttrs } from 'vue'
+import { type MaybeRef, type Ref, computed, unref, useAttrs } from 'vue'
 import { tryOnBeforeUnmount, tryOnMounted, useElementBounding } from '@vueuse/core'
 import { useElementTransform, useMotion } from '@vueuse/motion'
 import { defu } from 'defu'
 import type { HeroProps } from '../components/hero'
 import { useHeroContext } from '../composables/use-hero-context'
 
-export type UseHeroProps = Omit<HeroProps, 'as'>
+export interface UseHeroProps extends Omit<HeroProps, 'as'> {
+  onComplete: () => void
+}
 
 export const defaultTransition = {
   type: 'spring',
@@ -24,13 +26,14 @@ function omit<T extends Record<string, any>, K extends keyof T>(source: T, keys:
   return picks as Omit<T, K>
 }
 
-export function useHero(domRef: Ref<any>, props: UseHeroProps, emit: any) {
+export function useHero(domRef: Ref<any>, options: MaybeRef<UseHeroProps>) {
   let motionInstance: any
 
   const attrs = useAttrs()
   const bounding: Record<string, number> = { x: 0, y: 0, width: 0, height: 0 }
   const { layouts, props: ctxProps } = useHeroContext()
   const { height, width, x, y, update } = useElementBounding(domRef)
+  const props = unref(options)
 
   const style = computed(() => attrs?.style ?? {})
   const transition = computed(() => defu(props.transition ?? {}, ctxProps.transition ?? {}, defaultTransition))
@@ -66,10 +69,7 @@ export function useHero(domRef: Ref<any>, props: UseHeroProps, emit: any) {
 
     const _transition = {
       ...unref(transition),
-
-      onComplete() {
-        emit('complete')
-      },
+      onComplete: props.onComplete,
     }
 
     const size = { width: bounding.width, height: bounding.height }

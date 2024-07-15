@@ -5,9 +5,19 @@ import { Tab, Tabs } from './components/Tabs'
 
 const activeTab = ref('A')
 const isLarge = ref(false)
+const hasCompleted = ref(false)
 
 function onSelect(value) {
   activeTab.value = value
+}
+
+function onComplete() {
+  hasCompleted.value = true
+}
+
+function toggleSize() {
+  isLarge.value = !isLarge.value
+  hasCompleted.value = false
 }
 </script>
 
@@ -43,12 +53,12 @@ function onSelect(value) {
 
       <div class="p-4 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-xl">
         <div class="grid place-items-center h-48 w-48">
-          <button class="inline-flex justify-center rounded-md border border-transparent bg-violet-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-violet-200" @click="isLarge = !isLarge">
-            Toggle
+          <button class="inline-flex justify-center rounded-md border border-transparent bg-violet-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-violet-200" @click="toggleSize">
+            Toggle (loading: {{ hasCompleted }})
           </button>
 
-          <Hero v-if="isLarge" as="div" layout-id="box" class="w-24 h-24 rounded-xl cursor-pointer" :style="{ background: '#f43f5e' }" @click="isLarge = !isLarge" />
-          <Hero v-else as="div" layout-id="box" class="w-12 h-12 rounded-xl cursor-pointer" :style="{ background: '#2dd4bf' }" @click="isLarge = !isLarge" />
+          <Hero v-if="isLarge" as="div" layout-id="box" class="w-24 h-24 rounded-xl cursor-pointer" :style="{ background: '#f43f5e' }" @complete="onComplete" />
+          <Hero v-else as="div" layout-id="box" class="w-12 h-12 rounded-xl cursor-pointer" :style="{ background: '#2dd4bf' }" @complete="onComplete" />
         </div>
       </div>
     </div>
