@@ -51,8 +51,6 @@ export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, 
     },
   })
 
-  console.log(previous)
-
   tryOnMounted(setupAnimation)
 
   function setupAnimation() {
