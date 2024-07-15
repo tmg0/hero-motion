@@ -6,7 +6,7 @@ import type { HeroProps } from '../components/hero'
 import { useHeroContext } from '../composables/use-hero-context'
 
 export interface UseHeroProps extends Omit<HeroProps, 'as'> {
-  onComplete: () => void
+  onComplete?: () => void
 }
 
 export const defaultTransition = {
@@ -26,13 +26,13 @@ function omit<T extends Record<string, any>, K extends keyof T>(source: T, keys:
   return picks as Omit<T, K>
 }
 
-export function useHero(domRef: Ref<HTMLElement | SVGElement | undefined>, options: MaybeRef<UseHeroProps>) {
+export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, options: MaybeRef<UseHeroProps>) {
   let motionInstance: any
 
   const attrs = useAttrs()
   const bounding: Record<string, number> = { x: 0, y: 0, width: 0, height: 0 }
   const { layouts, props: ctxProps } = useHeroContext()
-  const { height, width, x, y, update } = useElementBounding(domRef)
+  const { height, width, x, y, update } = useElementBounding(target)
   const props = unref(options)
 
   const style = computed(() => attrs?.style ?? {})
@@ -50,6 +50,8 @@ export function useHero(domRef: Ref<HTMLElement | SVGElement | undefined>, optio
       layouts.value[props.layoutId] = value
     },
   })
+
+  console.log(previous)
 
   tryOnMounted(setupAnimation)
 
@@ -78,7 +80,7 @@ export function useHero(domRef: Ref<HTMLElement | SVGElement | undefined>, optio
     const initial = { ...unref(previous), x: _x, y: _y, scaleX: scale.x, scaleY: scale.y, ...size }
     const enter = { ...style.value, x: 0, y: 0, scaleX: 1, scaleY: 1, ...size, transition: _transition }
 
-    motionInstance = useMotion(domRef, {
+    motionInstance = useMotion(target, {
       initial: omit(initial, props.ignore as any),
       enter: omit(enter, props.ignore as any),
     })
@@ -88,7 +90,7 @@ export function useHero(domRef: Ref<HTMLElement | SVGElement | undefined>, optio
     update()
     bounding.x = x.value + width.value / 2
     bounding.y = y.value + height.value / 2
-    const { transform } = useElementTransform(domRef)
+    const { transform } = useElementTransform(target)
     bounding.x = bounding.x + (transform.x as number ?? 0)
     bounding.y = bounding.y + (transform.y as number ?? 0)
     bounding.z = bounding.z + (transform.x as number ?? 0)

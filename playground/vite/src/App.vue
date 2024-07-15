@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { Hero, HeroProvider } from 'hero-motion'
+import { HeroProvider, vHero } from 'hero-motion'
 import { Tab, Tabs } from './components/Tabs'
 
 const activeTab = ref('A')
@@ -57,8 +57,8 @@ function toggleSize() {
             Toggle (loading: {{ hasCompleted }})
           </button>
 
-          <Hero v-if="isLarge" as="div" layout-id="box" class="w-24 h-24 rounded-xl cursor-pointer" :style="{ background: '#f43f5e' }" @complete="onComplete" />
-          <Hero v-else as="div" layout-id="box" class="w-12 h-12 rounded-xl cursor-pointer" :style="{ background: '#2dd4bf' }" @complete="onComplete" />
+          <div v-if="isLarge" v-hero as="div" layout-id="box" class="w-24 h-24 rounded-xl cursor-pointer" :style="{ background: '#f43f5e' }" @complete="onComplete" />
+          <div v-else v-hero as="div" layout-id="box" class="w-12 h-12 rounded-xl cursor-pointer" :style="{ background: '#2dd4bf' }" @complete="onComplete" />
         </div>
       </div>
     </div>
