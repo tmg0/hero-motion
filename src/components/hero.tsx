@@ -15,7 +15,7 @@ const Hero = defineComponent({
   props,
 
   setup(props, { slots, emit }) {
-    const domRef = ref()
+    const domRef = ref<HTMLElement | SVGElement>()
     const options = computed(() => ({ ...props, onComplete }))
 
     function onComplete() {

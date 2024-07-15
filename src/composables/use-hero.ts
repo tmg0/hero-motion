@@ -26,7 +26,7 @@ function omit<T extends Record<string, any>, K extends keyof T>(source: T, keys:
   return picks as Omit<T, K>
 }
 
-export function useHero(domRef: Ref<any>, options: MaybeRef<UseHeroProps>) {
+export function useHero(domRef: Ref<HTMLElement | SVGElement | undefined>, options: MaybeRef<UseHeroProps>) {
   let motionInstance: any
 
   const attrs = useAttrs()
