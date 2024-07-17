@@ -1,11 +1,12 @@
 <script setup>
 import { ref } from 'vue'
-import { Hero, HeroProvider } from 'hero-motion'
+import { Hero, HeroProvider, directive } from 'hero-motion'
 import { Tab, Tabs } from './components/Tabs'
 
 const activeTab = ref('A')
 const isLarge = ref(false)
 const hasCompleted = ref(false)
+// const vHero = directive()
 
 function onSelect(value) {
   activeTab.value = value
