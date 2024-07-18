@@ -1,6 +1,7 @@
 import { type ExtractPropTypes, type PropType, computed, defineComponent, ref } from 'vue'
 import { useHero } from '../composables/use-hero'
 import type { Transition } from '../types'
+import { useHeroContext } from '../composables/use-hero-context'
 
 const props = {
   as: { type: String as PropType<keyof HTMLElementTagNameMap>, default: 'div' },
@@ -14,9 +15,9 @@ export type HeroProps = ExtractPropTypes<typeof props>
 const Hero = defineComponent({
   props,
 
-  setup(props, { slots, emit }) {
+  setup(props, { slots, emit, attrs }) {
     const domRef = ref<HTMLElement | SVGElement>()
-    const options = computed(() => ({ ...props, onComplete }))
+    const options = computed(() => ({ ...props, style: attrs.style ?? {}, onComplete }))
 
     function onComplete() {
       emit('complete')

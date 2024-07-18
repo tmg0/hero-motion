@@ -3,7 +3,7 @@ import { tryOnBeforeUnmount, tryOnMounted, useElementBounding } from '@vueuse/co
 import { useElementTransform, useMotion } from '@vueuse/motion'
 import { defu } from 'defu'
 import type { HeroProps } from '../components/hero'
-import { useHeroContext } from '../composables/use-hero-context'
+import { type HeroContext, useHeroContext } from '../composables/use-hero-context'
 
 export interface UseHeroProps extends Omit<HeroProps, 'as'> {
   style?: Record<string, any>
@@ -27,11 +27,11 @@ function omit<T extends Record<string, any>, K extends keyof T>(source: T, keys:
   return picks as Omit<T, K>
 }
 
-export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, options: MaybeRef<UseHeroProps>) {
+export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, options: MaybeRef<UseHeroProps>, ctx?: HeroContext) {
   let motionInstance: any
 
   const bounding: Record<string, number> = { x: 0, y: 0, width: 0, height: 0 }
-  const { layouts, props: ctxProps } = useHeroContext()
+  const { layouts, props: ctxProps } = ctx ?? useHeroContext()
   const { height, width, x, y, update } = useElementBounding(target)
   const props = unref(options)
 
@@ -52,6 +52,7 @@ export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, 
   })
 
   tryOnMounted(setupAnimation)
+  tryOnBeforeUnmount(setPreviousState)
 
   function setupAnimation() {
     bounding.x = x.value + width.value / 2
@@ -84,7 +85,7 @@ export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, 
     })
   }
 
-  tryOnBeforeUnmount(() => {
+  function setPreviousState() {
     update()
     bounding.x = x.value + width.value / 2
     bounding.y = y.value + height.value / 2
@@ -99,7 +100,7 @@ export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, 
     if (transform.scaleY)
       _props.height = _props.height * (transform.scaleY as number ?? 1)
     previous.value = _props
-  })
+  }
 
-  return { bounding, x, y }
+  return { bounding, x, y, setupAnimation, setPreviousState }
 }
