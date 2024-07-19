@@ -16,7 +16,7 @@ export const defaultTransition = {
   damping: 35,
 }
 
-function omit<T extends Record<string, any>, K extends keyof T>(source: T, keys: K[] = []): Omit<T, K> {
+export function omit<T extends Record<string, any>, K extends keyof T>(source: T, keys: K[] = []): Omit<T, K> {
   if (!keys.length)
     return source
   const picks: any = {}
@@ -52,7 +52,6 @@ export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, 
   })
 
   tryOnMounted(setupAnimation)
-  tryOnBeforeUnmount(setPreviousState)
 
   function setupAnimation() {
     bounding.x = x.value + width.value / 2
@@ -85,7 +84,7 @@ export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, 
     })
   }
 
-  function setPreviousState() {
+  tryOnBeforeUnmount(() => {
     update()
     bounding.x = x.value + width.value / 2
     bounding.y = y.value + height.value / 2
@@ -100,7 +99,7 @@ export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, 
     if (transform.scaleY)
       _props.height = _props.height * (transform.scaleY as number ?? 1)
     previous.value = _props
-  }
+  })
 
-  return { bounding, x, y, setupAnimation, setPreviousState }
+  return { bounding, x, y }
 }
