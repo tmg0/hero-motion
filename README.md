@@ -100,27 +100,11 @@ See [playground](./playground/vite/README.md).
 ### `props.transition`
 
 - Type: `Transition`
-- Default: `undefined`
+- Default: `@vueuse/motion['Transition']`
 
 Transition props can be used in both `HeroProvider` and `Hero`.
 
 The configuration defined in `HeroProvider` will be used as global default value, and you do not need to re-declare it on each `Hero` components.
-
-```ts
-interface Transition {
-  delay: number
-  repeat: number
-  repeatDelay: number
-  repeatType: 'loop' | 'mirror' | 'reverse'
-  type: 'spring' | 'keyframes'
-  stiffness: number
-  damping: number
-  mass: number
-  bounce: number
-  duration: number
-  ease: string
-}
-```
 
 **Example:**
 
