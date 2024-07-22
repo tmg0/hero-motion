@@ -1,0 +1,4 @@
+{
+  "installDependencies": false,
+  "startCommand": "rm -rf pnpm-lock.yaml && pnpm i && pnpm build && pnpm play:vite"
+}

@@ -5,7 +5,7 @@ import { Tab, Tabs } from './components/Tabs'
 
 const activeTab = ref('A')
 const isLarge = ref(false)
-const hasCompleted = ref(false)
+const hasCompleted = ref(true)
 const vHero = directive()
 
 function onSelect(value) {
