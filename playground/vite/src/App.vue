@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { Hero, HeroProvider, directive } from 'hero-motion'
+import { HeroProvider, directive } from 'hero-motion'
 import { Tab, Tabs } from './components/Tabs'
 
 const activeTab = ref('A')

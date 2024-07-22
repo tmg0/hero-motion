@@ -42,7 +42,7 @@ import { HeroProvider } from 'hero-motion'
 
 ### Hero
 
-You can use hero with both component and composable method.
+You can use `hero` with component, composable function or directive ways.
 
 `Component`
 
@@ -72,6 +72,21 @@ useHero(domRef, {
 
 <template>
   <div ref="domRef" />
+</template>
+```
+
+`Directive`
+
+```vue
+<script setup>
+import { ref } from 'vue'
+import { directive } from 'hero-motion'
+
+const vHero = directive()
+</script>
+
+<template>
+  <div v-hero layout-id="LAYOUT_ID" />
 </template>
 ```
 
