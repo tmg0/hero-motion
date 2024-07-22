@@ -1,12 +1,13 @@
-import { type MaybeRef, type Ref, computed, unref, useAttrs } from 'vue'
+import { type MaybeRef, computed, unref } from 'vue'
 import { tryOnBeforeUnmount, tryOnMounted, useElementBounding } from '@vueuse/core'
 import { useElementTransform, useMotion } from '@vueuse/motion'
 import { defu } from 'defu'
 import type { HeroProps } from '../components/hero'
-import { useHeroContext } from '../composables/use-hero-context'
+import { type HeroContext, useHeroContext } from '../composables/use-hero-context'
 
 export interface UseHeroProps extends Omit<HeroProps, 'as'> {
-  onComplete: () => void
+  style?: Record<string, any>
+  onComplete?: () => void
 }
 
 export const defaultTransition = {
@@ -15,7 +16,7 @@ export const defaultTransition = {
   damping: 35,
 }
 
-function omit<T extends Record<string, any>, K extends keyof T>(source: T, keys: K[] = []): Omit<T, K> {
+export function omit<T extends Record<string, any>, K extends keyof T>(source: T, keys: K[] = []): Omit<T, K> {
   if (!keys.length)
     return source
   const picks: any = {}
@@ -26,17 +27,15 @@ function omit<T extends Record<string, any>, K extends keyof T>(source: T, keys:
   return picks as Omit<T, K>
 }
 
-export function useHero(domRef: Ref<any>, options: MaybeRef<UseHeroProps>) {
+export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, options: MaybeRef<UseHeroProps>, ctx?: HeroContext) {
   let motionInstance: any
 
-  const attrs = useAttrs()
   const bounding: Record<string, number> = { x: 0, y: 0, width: 0, height: 0 }
-  const { layouts, props: ctxProps } = useHeroContext()
-  const { height, width, x, y, update } = useElementBounding(domRef)
+  const { layouts, props: ctxProps } = ctx ?? useHeroContext()
+  const { height, width, x, y, update } = useElementBounding(target)
   const props = unref(options)
-
-  const style = computed(() => attrs?.style ?? {})
-  const transition = computed(() => defu(props.transition ?? {}, ctxProps.transition ?? {}, defaultTransition))
+  const style = computed(() => props?.style ?? {})
+  const transition = computed(() => defu(props.transition ?? {}, ctxProps.value.transition ?? {}, defaultTransition))
 
   const previous = computed({
     get() {
@@ -78,7 +77,7 @@ export function useHero(domRef: Ref<any>, options: MaybeRef<UseHeroProps>) {
     const initial = { ...unref(previous), x: _x, y: _y, scaleX: scale.x, scaleY: scale.y, ...size }
     const enter = { ...style.value, x: 0, y: 0, scaleX: 1, scaleY: 1, ...size, transition: _transition }
 
-    motionInstance = useMotion(domRef, {
+    motionInstance = useMotion(target, {
       initial: omit(initial, props.ignore as any),
       enter: omit(enter, props.ignore as any),
     })
@@ -88,7 +87,7 @@ export function useHero(domRef: Ref<any>, options: MaybeRef<UseHeroProps>) {
     update()
     bounding.x = x.value + width.value / 2
     bounding.y = y.value + height.value / 2
-    const { transform } = useElementTransform(domRef)
+    const { transform } = useElementTransform(target)
     bounding.x = bounding.x + (transform.x as number ?? 0)
     bounding.y = bounding.y + (transform.y as number ?? 0)
     bounding.z = bounding.z + (transform.x as number ?? 0)

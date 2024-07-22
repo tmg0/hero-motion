@@ -1,4 +1,4 @@
-import { type ExtractPropTypes, type PropType, defineComponent, ref } from 'vue'
+import { type ExtractPropTypes, type PropType, computed, defineComponent, ref } from 'vue'
 import { type HeroContext, useProvideHeroContext } from '../composables/use-hero-context'
 import type { Transition } from '../types'
 
@@ -12,7 +12,8 @@ const HeroProvider = defineComponent({
   props,
 
   setup(props, { slots }) {
-    const context: HeroContext = { layouts: ref({}), props }
+    const ctxProps = computed(() => props)
+    const context: HeroContext = { layouts: ref({}), props: ctxProps }
     useProvideHeroContext(context)
 
     return () => (
