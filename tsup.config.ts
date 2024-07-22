@@ -3,7 +3,7 @@ import VueJSX from 'unplugin-vue-jsx/esbuild'
 import Oxlint from 'unplugin-oxlint/esbuild'
 
 export default defineConfig(options => ({
-  entry: ['src'],
+  entry: ['src/**/*'],
   splitting: true,
   clean: true,
   treeshake: true,
