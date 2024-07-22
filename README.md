@@ -19,7 +19,7 @@
 ## Installation
 
 ```
-npm install hero-motion @vueuse/motion @vueuse/core
+npm install hero-motion @vueuse/motion
 ```
 
 ## Usage
