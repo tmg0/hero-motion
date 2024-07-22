@@ -34,9 +34,8 @@ export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, 
   const { layouts, props: ctxProps } = ctx ?? useHeroContext()
   const { height, width, x, y, update } = useElementBounding(target)
   const props = unref(options)
-
   const style = computed(() => props?.style ?? {})
-  const transition = computed(() => defu(props.transition ?? {}, ctxProps.transition ?? {}, defaultTransition))
+  const transition = computed(() => defu(props.transition ?? {}, ctxProps.value.transition ?? {}, defaultTransition))
 
   const previous = computed({
     get() {

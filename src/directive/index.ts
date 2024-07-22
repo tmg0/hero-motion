@@ -19,7 +19,7 @@ export function directive() {
   const props = ref<Partial<UseHeroProps>>({})
 
   const style = computed(() => props.value.style ?? {})
-  const transition = computed(() => defu(props.value.transition ?? {}, ctxProps.transition ?? {}, defaultTransition))
+  const transition = computed(() => defu(props.value.transition ?? {}, ctxProps.value.transition ?? {}, defaultTransition))
 
   const previous = computed({
     get() {
@@ -34,7 +34,7 @@ export function directive() {
     },
   })
 
-  function setupAnimation() {
+  function register() {
     bounding.x = x + width / 2
     bounding.y = y + height / 2
     bounding.width = width
@@ -65,36 +65,37 @@ export function directive() {
     })
   }
 
-  function setPreviousState() {
-    bounding.x = x + width / 2
-    bounding.y = y + height / 2
-    const { transform } = useElementTransform(domRef)
-    bounding.x = bounding.x + (transform.x as number ?? 0)
-    bounding.y = bounding.y + (transform.y as number ?? 0)
-    bounding.z = bounding.z + (transform.x as number ?? 0)
-    const motionProperties = motionInstance ? motionInstance.motionProperties : style.value
-    const _props = { ...motionProperties, ...bounding }
-    if (transform.scaleX)
-      _props.width = _props.width * (transform.scaleX as number ?? 1)
-    if (transform.scaleY)
-      _props.height = _props.height * (transform.scaleY as number ?? 1)
-    previous.value = _props
+  function updateBounding(dom: HTMLElement | SVGElement) {
+    const b = useElementBounding(dom)
+    width = b.width.value
+    height = b.height.value
+    x = b.x.value
+    y = b.y.value
   }
 
   return {
     mounted(dom: HTMLElement | SVGElement, _: any, vnode: any) {
       domRef.value = dom
       props.value = { ...vnode.props, layoutId: vnode.props['layout-id'] }
-      const b = useElementBounding(dom)
-      width = b.width.value
-      height = b.height.value
-      x = b.x.value
-      y = b.y.value
-      setupAnimation()
+      updateBounding(dom)
+      register()
     },
 
-    beforeUnmount() {
-      setPreviousState()
+    beforeUnmount(dom: HTMLElement | SVGElement) {
+      updateBounding(dom)
+      bounding.x = x + width / 2
+      bounding.y = y + height / 2
+      const { transform } = useElementTransform(domRef)
+      bounding.x = bounding.x + (transform.x as number ?? 0)
+      bounding.y = bounding.y + (transform.y as number ?? 0)
+      bounding.z = bounding.z + (transform.x as number ?? 0)
+      const motionProperties = motionInstance ? motionInstance.motionProperties : style.value
+      const _props = { ...motionProperties, ...bounding }
+      if (transform.scaleX)
+        _props.width = _props.width * (transform.scaleX as number ?? 1)
+      if (transform.scaleY)
+        _props.height = _props.height * (transform.scaleY as number ?? 1)
+      previous.value = _props
     },
   }
 }
