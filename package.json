@@ -1,6 +1,6 @@
 {
   "name": "hero-motion",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A shared layout animations for vue like framer motion.",
   "author": "zekun.jin",
   "license": "MIT",
@@ -41,7 +41,7 @@
     "vue": ">=3.0.0"
   },
   "dependencies": {
-    "@vueuse/core": "^10.11.0",
+    "@vueuse/core": "^10.11.1",
     "defu": "^6.1.4"
   },
   "devDependencies": {
