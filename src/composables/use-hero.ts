@@ -10,11 +10,7 @@ export interface UseHeroProps extends Omit<HeroProps, 'as'> {
   onComplete?: () => void
 }
 
-export const defaultTransition = {
-  type: 'spring',
-  stiffness: 600,
-  damping: 35,
-}
+export const defaultTransition = {}
 
 export function omit<T extends Record<string, any>, K extends keyof T>(source: T, keys: K[] = []): Omit<T, K> {
   if (!keys.length)

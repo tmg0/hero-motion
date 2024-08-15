@@ -23,7 +23,7 @@ function toggleSize() {
 </script>
 
 <template>
-  <HeroProvider :transition="{ type: 'keyframes' }">
+  <HeroProvider :transition="{ type: 'spring' }">
     <div class="p-6 flex flex-col gap-3">
       <div class="font-bold">
         Toggle Position Animation

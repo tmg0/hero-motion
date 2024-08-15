@@ -77,6 +77,9 @@ useHero(domRef, {
 
 `Directive`
 
+> [!IMPORTANT]
+> _The usage of `directive` is currently under development, and there may be unforeseen issues. We recommend using `components` or `composables` for now._
+
 ```vue
 <script setup>
 import { ref } from 'vue'
