@@ -1,5 +1,5 @@
-import { type Ref, inject, provide, ref } from 'vue'
-import { PROVIDE_CONTEXT } from '../constants'
+import { type Ref, ref } from 'vue'
+import { createGlobalState } from '@vueuse/core'
 import type { HeroProviderProps } from '../components/hero-provider'
 
 export interface Layout extends Record<string, any | undefined> {}
@@ -9,12 +9,22 @@ export interface HeroContext {
   props: Ref<HeroProviderProps>
 }
 
+const useState = createGlobalState(() => {
+  const layouts = ref<Record<string, Layout>>({})
+  const props = ref<HeroProviderProps>({})
+
+  return {
+    layouts,
+    props,
+  }
+})
+
 export function useProvideHeroContext(context: HeroContext) {
-  provide(PROVIDE_CONTEXT, context)
+  const state = useState()
+  state.layouts.value = context.layouts.value ?? {}
+  state.props.value = context.props.value
 }
 
-const defaults = { layouts: ref({}), props: ref({}) }
-
-export function useHeroContext() {
-  return inject<HeroContext>(PROVIDE_CONTEXT, defaults)
+export function useHeroContext(): HeroContext {
+  return useState()
 }
