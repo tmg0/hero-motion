@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@vueuse/core':
         specifier: ^11.0.0
-        version: 11.0.0(vue@3.4.38)
+        version: 11.0.1(vue@3.4.38)
       defu:
         specifier: ^6.1.4
         version: 6.1.4
@@ -59,7 +59,7 @@ importers:
     dependencies:
       '@vueuse/core':
         specifier: ^11.0.0
-        version: 11.0.0(vue@3.4.38)
+        version: 11.0.1(vue@3.4.38)
       '@vueuse/motion':
         specifier: ^2.0.0
         version: 2.2.3(vue@3.4.38)
@@ -2057,12 +2057,12 @@ packages:
       - '@vue/composition-api'
       - vue
 
-  /@vueuse/core@11.0.0(vue@3.4.38):
-    resolution: {integrity: sha512-shibzNGjmRjZucEm97B8V0NO5J3vPHMCE/mltxQ3vHezbDoFQBMtK11XsfwfPionxSbo+buqPmsCljtYuXIBpw==}
+  /@vueuse/core@11.0.1(vue@3.4.38):
+    resolution: {integrity: sha512-YTrekI18WwEyP3h168Fir94G/HNC27wvXJI21Alm0sPOwvhihfkrvHIe+5PNJq+MpgWdRcsjvE/38JaoKrgZhQ==}
     dependencies:
       '@types/web-bluetooth': 0.0.20
-      '@vueuse/metadata': 11.0.0
-      '@vueuse/shared': 11.0.0(vue@3.4.38)
+      '@vueuse/metadata': 11.0.1
+      '@vueuse/shared': 11.0.1(vue@3.4.38)
       vue-demi: 0.14.10(vue@3.4.38)
     transitivePeerDependencies:
       - '@vue/composition-api'
@@ -2072,8 +2072,8 @@ packages:
   /@vueuse/metadata@10.11.1:
     resolution: {integrity: sha512-IGa5FXd003Ug1qAZmyE8wF3sJ81xGLSqTqtQ6jaVfkeZ4i5kS2mwQF61yhVqojRnenVew5PldLyRgvdl4YYuSw==}
 
-  /@vueuse/metadata@11.0.0:
-    resolution: {integrity: sha512-0TKsAVT0iUOAPWyc9N79xWYfovJVPATiOPVKByG6jmAYdDiwvMVm9xXJ5hp4I8nZDxpCcYlLq/Rg9w1Z/jrGcg==}
+  /@vueuse/metadata@11.0.1:
+    resolution: {integrity: sha512-dTFvuHFAjLYOiSd+t9Sk7xUiuL6jbfay/eX+g+jaipXXlwKur2VCqBCZX+jfu+2vROUGcUsdn3fJR9KkpadIOg==}
     dev: false
 
   /@vueuse/motion@2.2.3(vue@3.4.38):
@@ -2104,8 +2104,8 @@ packages:
       - '@vue/composition-api'
       - vue
 
-  /@vueuse/shared@11.0.0(vue@3.4.38):
-    resolution: {integrity: sha512-i4ZmOrIEjSsL94uAEt3hz88UCz93fMyP/fba9S+vypX90fKg3uYX9cThqvWc9aXxuTzR0UGhOKOTQd//Goh1nQ==}
+  /@vueuse/shared@11.0.1(vue@3.4.38):
+    resolution: {integrity: sha512-eAPf5CQB3HR0S76HqrhjBqFYstZfiHWZq8xF9EQmobGBkrhPfErJEhr8aMNQMqd6MkENIx2pblIEfJGlHpClug==}
     dependencies:
       vue-demi: 0.14.10(vue@3.4.38)
     transitivePeerDependencies:
