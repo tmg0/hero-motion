@@ -51,7 +51,7 @@
     "@vueuse/motion": "^2.2.3",
     "eslint": "^9.9.0",
     "eslint-plugin-oxlint": "^0.7.1",
-    "oxlint": "^0.7.1",
+    "oxlint": "^0.8.0",
     "tsup": "^8.2.4",
     "typescript": "^5.5.4",
     "unplugin-oxlint": "^0.6.2",
