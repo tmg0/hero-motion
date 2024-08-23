@@ -50,7 +50,7 @@
     "@vue/tsconfig": "^0.5.1",
     "@vueuse/motion": "^2.2.3",
     "eslint": "^9.9.0",
-    "eslint-plugin-oxlint": "^0.7.1",
+    "eslint-plugin-oxlint": "^0.8.0",
     "oxlint": "^0.8.0",
     "tsup": "^8.2.4",
     "typescript": "^5.5.4",
