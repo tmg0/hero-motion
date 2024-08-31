@@ -45,7 +45,7 @@
     "defu": "^6.1.4"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.27.3",
+    "@antfu/eslint-config": "^3.0.0",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@vue/tsconfig": "^0.5.1",
     "@vueuse/motion": "^2.2.3",
