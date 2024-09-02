@@ -17,7 +17,7 @@ function onNavi({ username }) {
       <Avatar :id="contributor.username" size="40" :src="contributor.avatar" />
 
       <div>
-        <div class="text-sm font-bold">
+        <div class="text-sm font-bold text-black">
           {{ contributor.username }}
         </div>
         <div class="text-xs text-black/50">
