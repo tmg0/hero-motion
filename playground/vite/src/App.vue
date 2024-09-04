@@ -25,19 +25,17 @@ function toggleSize() {
 <template>
   <HeroProvider :transition="{ type: 'spring' }">
     <div class="bg-black/90 w-full min-h-screen text-white">
-      <div class="py-24 w-[768px] mx-auto flex flex-col gap-6">
+      <div class="px-6 py-12 lg:py-24  lg:px-0 lg:w-[768px] mx-auto flex flex-col gap-6">
         <div class="text-6xl font-semibold flex gap-4">
           <span>Hero</span>
           <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500">Motion.</span>
         </div>
 
-        <div class="text-2xl leading-10">
+        <div class="text-lg leading-relaxed lg:text-2xl">
           🌊 A shared layout animations for vue like framer motion, use layoutId prop and components will animate from one to another.
         </div>
 
-        <div class="text-2xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500">
-          Get started
-        </div>
+        <div class="h-px w-full bg-white/10" />
 
         <div class="font-bold">
           Toggle Position Animation
