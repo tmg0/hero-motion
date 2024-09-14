@@ -1,6 +1,6 @@
-import { type ExtractPropTypes, type PropType, computed, defineComponent, ref } from 'vue'
-import { type HeroContext, useProvideHeroContext } from '../composables/use-hero-context'
 import type { Transition } from '../types'
+import { computed, defineComponent, type ExtractPropTypes, type PropType, ref } from 'vue'
+import { type HeroContext, useProvideHeroContext } from '../composables/use-hero-context'
 
 const props = {
   transition: { type: Object as PropType<Partial<Transition>>, default: undefined },

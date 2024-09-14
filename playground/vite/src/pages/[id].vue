@@ -1,8 +1,8 @@
 <script setup>
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useContributor } from '../composables/useContributor'
 import Avatar from '../components/Avatar.vue'
+import { useContributor } from '../composables/useContributor'
 
 const route = useRoute()
 const router = useRouter()

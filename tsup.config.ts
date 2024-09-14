@@ -1,6 +1,6 @@
 import { defineConfig } from 'tsup'
-import VueJSX from 'unplugin-vue-jsx/esbuild'
 import Oxlint from 'unplugin-oxlint/esbuild'
+import VueJSX from 'unplugin-vue-jsx/esbuild'
 
 export default defineConfig(options => ({
   entry: ['src/**/*'],

@@ -1,9 +1,9 @@
-import { computed, ref, unref } from 'vue'
 import { useElementBounding } from '@vueuse/core'
 import { useElementTransform, useMotion } from '@vueuse/motion'
 import { defu } from 'defu'
+import { computed, ref, unref } from 'vue'
+import { defaultTransition, omit, type UseHeroProps } from '../composables/use-hero'
 import { useHeroContext } from '../composables/use-hero-context'
-import { type UseHeroProps, defaultTransition, omit } from '../composables/use-hero'
 
 export function directive() {
   let motionInstance: any

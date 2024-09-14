@@ -45,19 +45,19 @@
     "defu": "^6.1.4"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.0.0",
+    "@antfu/eslint-config": "^3.6.0",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@vue/tsconfig": "^0.5.1",
-    "@vueuse/motion": "^2.2.3",
-    "eslint": "^9.9.1",
-    "eslint-plugin-oxlint": "^0.9.0",
-    "oxlint": "^0.9.0",
+    "@vueuse/motion": "^2.2.5",
+    "eslint": "^9.10.0",
+    "eslint-plugin-oxlint": "^0.9.5",
+    "oxlint": "^0.9.5",
     "tsup": "^8.2.4",
-    "typescript": "^5.5.4",
+    "typescript": "^5.6.2",
     "unplugin-oxlint": "^0.6.2",
     "unplugin-vue-jsx": "^0.4.0",
-    "vitest": "^2.0.5",
-    "vue": "^3.4.38"
+    "vitest": "^2.1.1",
+    "vue": "^3.5.5"
   },
   "stackblitz": {
     "startCommand": "pnpm build && pnpm play:vite"

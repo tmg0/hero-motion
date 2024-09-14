@@ -1,7 +1,7 @@
 <script setup>
 import { useRouter } from 'vue-router'
-import { useContributor } from '../composables/useContributor'
 import Avatar from '../components/Avatar.vue'
+import { useContributor } from '../composables/useContributor'
 
 const router = useRouter()
 const { data } = useContributor()

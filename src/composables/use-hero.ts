@@ -1,8 +1,8 @@
-import { type MaybeRef, computed, unref } from 'vue'
+import type { HeroProps } from '../components/hero'
 import { tryOnBeforeUnmount, tryOnMounted, useElementBounding } from '@vueuse/core'
 import { useElementTransform, useMotion } from '@vueuse/motion'
 import { defu } from 'defu'
-import type { HeroProps } from '../components/hero'
+import { computed, type MaybeRef, unref } from 'vue'
 import { type HeroContext, useHeroContext } from '../composables/use-hero-context'
 
 export interface UseHeroProps extends Omit<HeroProps, 'as'> {

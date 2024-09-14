@@ -60,8 +60,8 @@ import { Hero } from 'hero-motion'
 
 ```vue
 <script setup>
-import { ref } from 'vue'
 import { useHero } from 'hero-motion'
+import { ref } from 'vue'
 
 const domRef = ref()
 
@@ -82,8 +82,8 @@ useHero(domRef, {
 
 ```vue
 <script setup>
-import { ref } from 'vue'
 import { directive } from 'hero-motion'
+import { ref } from 'vue'
 
 const vHero = directive()
 </script>

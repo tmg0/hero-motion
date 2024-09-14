@@ -1,6 +1,6 @@
-import { type ExtractPropTypes, type PropType, computed, defineComponent, ref } from 'vue'
-import { useHero } from '../composables/use-hero'
 import type { Transition } from '../types'
+import { computed, defineComponent, type ExtractPropTypes, type PropType, ref } from 'vue'
+import { useHero } from '../composables/use-hero'
 
 const props = {
   as: { type: String as PropType<keyof HTMLElementTagNameMap>, default: 'div' },

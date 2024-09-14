@@ -1,6 +1,6 @@
-import { type Ref, ref } from 'vue'
-import { createGlobalState } from '@vueuse/core'
 import type { HeroProviderProps } from '../components/hero-provider'
+import { createGlobalState } from '@vueuse/core'
+import { type Ref, ref } from 'vue'
 
 export interface Layout extends Record<string, any | undefined> {}
 
