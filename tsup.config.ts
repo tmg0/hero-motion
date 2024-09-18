@@ -1,9 +1,8 @@
 import { defineConfig } from 'tsup'
-import Oxlint from 'unplugin-oxlint/esbuild'
 import VueJSX from 'unplugin-vue-jsx/esbuild'
 
 export default defineConfig(options => ({
-  entry: ['src/**/*'],
+  entry: ['./src/index.ts', './src/nuxt.ts'],
   splitting: true,
   clean: true,
   treeshake: true,
@@ -12,11 +11,5 @@ export default defineConfig(options => ({
   minify: !options.watch,
   esbuildPlugins: [
     VueJSX({}),
-    Oxlint({
-      watch: !!options.watch,
-      includes: ['src/**/*.ts', 'playground/*/src/**/*.ts'],
-      deny: ['correctness'],
-      packageManager: 'npm',
-    }),
   ],
 }))
