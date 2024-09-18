@@ -1,5 +1,5 @@
 import type { HeroProviderProps } from './components/hero-provider'
-import { addPlugin, createResolver, defineNuxtModule } from '@nuxt/kit'
+import { addComponent, addPlugin, createResolver, defineNuxtModule } from '@nuxt/kit'
 import { defu } from 'defu'
 
 export interface ModuleOptions extends Omit<HeroProviderProps, 'as'> {}
@@ -20,6 +20,11 @@ const module: any = defineNuxtModule<ModuleOptions>({
 
     nuxt.options.runtimeConfig.public.hero = defu(nuxt.options.runtimeConfig.public.hero ?? {}, { ...options })
     nuxt.options.build.transpile.push(resolver.resolve('./runtime'))
+
+    addComponent({
+      name: 'Hero',
+      filePath: resolver.resolve('./runtime/components/Hero.vue'),
+    })
 
     nuxt.hook('modules:done', () => {
       addPlugin(resolver.resolve('./runtime/plugin'))
