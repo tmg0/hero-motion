@@ -93,6 +93,17 @@ const vHero = directive()
 </template>
 ```
 
+### Nuxt
+
+hero-motion also provide nuxt module for quick start
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  modules: ['hero-motion/nuxt'],
+})
+```
+
 ## Playground
 
 See [playground](./playground/vite/README.md).
