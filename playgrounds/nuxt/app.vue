@@ -6,9 +6,7 @@ const isLarge = ref(false)
 
 <template>
   <div>
-    <Hero v-if="!isLarge" layout-id="1" style="width: 10px; height: 10px; background: red;" />
-    <Hero v-else layout-id="1" style="width: 20px; height: 20px; background: blue;" />
-
-    <button @click="isLarge = !isLarge">Toggle</button>
+    <Hero v-if="!isLarge" layout-id="1" style="width: 50px; height: 50px; background: red;" @click="isLarge = !isLarge" />
+    <Hero v-else layout-id="1" style="width: 100px; height: 100px; background: blue;" @click="isLarge = !isLarge" />
   </div>
 </template>
