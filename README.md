@@ -95,7 +95,7 @@ const vHero = directive()
 
 ### Nuxt
 
-hero-motion also provide nuxt module for quick start
+`hero-motion` also provide nuxt module for quick start
 
 ```ts
 // nuxt.config.ts
@@ -103,6 +103,8 @@ export default defineNuxtConfig({
   modules: ['hero-motion/nuxt'],
 })
 ```
+
+`hero-motion/nuxt` will auto import `Hero` component, and do not need to wrap root component with `HeroProvider`.
 
 ## Playground
 
