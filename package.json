@@ -26,9 +26,9 @@
       "require": "./dist/index.cjs"
     },
     "./nuxt": {
-      "types": "./dist/nuxt.d.ts",
-      "import": "./dist/nuxt.mjs",
-      "require": "./dist/nuxt.cjs"
+      "types": "./dist/nuxt/index.d.ts",
+      "import": "./dist/nuxt/index.mjs",
+      "require": "./dist/nuxt/index.cjs"
     }
   },
   "main": "./dist/index.cjs",
@@ -39,7 +39,8 @@
     "play": "pnpm play:vite",
     "play:vite": "cd playgrounds/vite && pnpm dev",
     "play:nuxt": "cd playgrounds/nuxt && pnpm dev",
-    "build": "tsup",
+    "build": "pnpm build:nuxt || tsup",
+    "build:nuxt": "nuxt-module-build build --outDir ./dist/nuxt",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "vitest"
@@ -55,6 +56,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^3.6.0",
+    "@nuxt/module-builder": "^0.8.4",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@vue/tsconfig": "^0.5.1",
     "@vueuse/motion": "^2.2.5",
