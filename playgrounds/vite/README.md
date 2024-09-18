@@ -12,7 +12,7 @@ You can also run `pnpm play:vite` in the root dir on your local environment.
 
 ## Tabs Component
 
-There is a [Tabs Component]('./playground/vite/components/Tabs') in playgound vite example, and let's pay attention to the [TabCursor]('./playground/vite/components/Tabs/TabCursor.vue')
+There is a [Tabs Component]('./playgrounds/vite/components/Tabs') in playgound vite example, and let's pay attention to the [TabCursor]('./playgrounds/vite/components/Tabs/TabCursor.vue')
 
 This is the slider cursor for each `Tab` under the `Tabs` component.
 
@@ -62,7 +62,7 @@ const emit = defineEmits(['click'])
 
 `hero-motion` support tansition across different pages, even when components are under different routes, ensure smooth transitions when navigating between them.
 
-See the [Avatar]('./playground/vite/components/Avatar.vue') component in the playground:
+See the [Avatar]('./playgrounds/vite/components/Avatar.vue') component in the playground:
 
 ```vue
 <script setup lang="ts">
