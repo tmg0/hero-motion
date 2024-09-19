@@ -1,6 +1,6 @@
 {
   "name": "hero-motion",
-  "version": "0.4.0-alpha.1",
+  "version": "0.4.0-alpha.2",
   "packageManager": "pnpm@9.10.0",
   "description": "A shared layout animations for vue like framer motion.",
   "author": "zekun.jin",
@@ -26,9 +26,9 @@
       "require": "./dist/index.cjs"
     },
     "./nuxt": {
-      "types": "./dist/nuxt/index.d.ts",
-      "import": "./dist/nuxt/index.mjs",
-      "require": "./dist/nuxt/index.cjs"
+      "types": "./dist/nuxt/types.d.ts",
+      "import": "./dist/nuxt/module.mjs",
+      "require": "./dist/nuxt/module.cjs"
     }
   },
   "main": "./dist/index.cjs",
