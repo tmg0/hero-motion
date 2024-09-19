@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Transition } from '../../types'
-import { useNuxtApp } from '#app'
+import { useRuntimeConfig } from '#app'
 import { Hero } from 'hero-motion'
 
 defineProps<{
@@ -10,11 +10,20 @@ defineProps<{
   ignore?: string[]
 }>()
 
-const { $hero } = useNuxtApp()
+const emit = defineEmits(['complete'])
+
+const config = useRuntimeConfig()
+const ctx = computed(() => config.public.hero ?? {})
 </script>
 
 <template>
-  <Hero :as="as" :layout-id="layoutId" :transition="{ ...$hero.transition, ...transition }" :ignore="ignore">
+  <Hero
+    :as="as"
+    :layout-id="layoutId"
+    :transition="{ ...ctx.transition, ...transition }"
+    :ignore="ignore"
+    @complete="emit('complete')"
+  >
     <slot />
   </Hero>
 </template>
