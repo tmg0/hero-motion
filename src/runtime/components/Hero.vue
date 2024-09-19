@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Transition } from '../../types'
 import { useRuntimeConfig } from '#app'
+import { computed } from '#imports'
 import { Hero } from 'hero-motion'
 
 defineProps<{
