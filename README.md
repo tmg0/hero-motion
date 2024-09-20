@@ -108,7 +108,11 @@ export default defineNuxtConfig({
 
 `hero-motion/nuxt` will auto import the `Hero` component for you, eliminating the need to manually import it in each file where you want to use it.
 
-Additionally, this module automatically wraps your Nuxt application with the `HeroProvider`, saving you the step of explicitly wrapping your root component. This streamlined setup process not only reduces boilerplate code but also ensures that the Hero motion functionality is available throughout your entire Nuxt application with minimal configuration effort on your part.
+```vue
+<template>
+  <Hero as="div" layout-id="ID" />
+</template>
+```
 
 ## Playground
 
