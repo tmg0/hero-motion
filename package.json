@@ -20,6 +20,10 @@
     "motion",
     "vueuse"
   ],
+  "files": [
+    "packages/core/dist",
+    "packages/nuxt/dist"
+  ],
   "exports": {
     ".": {
       "types": "./packages/core/dist/index.d.ts",
