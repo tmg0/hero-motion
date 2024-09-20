@@ -14,7 +14,9 @@
 
 🙌 Easy to use
 
-✅ Support most of the @vueuse/motion's props
+✅ Support most of the `@vueuse/motion`'s props
+
+🚀 Support auto-import feature through `nuxt-module`
 
 ## Installation
 
@@ -93,9 +95,9 @@ const vHero = directive()
 </template>
 ```
 
-### Nuxt
+### Nuxt (>= 0.4.0)
 
-`hero-motion` also provide nuxt module for quick start
+`hero-motion` also provides a Nuxt module for quick and easy integration
 
 ```ts
 // nuxt.config.ts
@@ -104,7 +106,8 @@ export default defineNuxtConfig({
 })
 ```
 
-`hero-motion/nuxt` will auto import `Hero` component, and do not need to wrap root component with `HeroProvider`.
+`hero-motion/nuxt` will auto import the `Hero` component for you, eliminating the need to manually import it in each file where you want to use it.
+Additionally, this module automatically wraps your Nuxt application with the `HeroProvider`, saving you the step of explicitly wrapping your root component. This streamlined setup process not only reduces boilerplate code but also ensures that the Hero motion functionality is available throughout your entire Nuxt application with minimal configuration effort on your part.
 
 ## Playground
 
