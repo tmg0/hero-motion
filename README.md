@@ -116,7 +116,19 @@ export default defineNuxtConfig({
 
 ## Playground
 
-See [playground](./playground/vite/README.md).
+- [vite](./playgrounds/vite).
+
+- [nuxt](./playgrounds/nuxt).
+
+### Live Vite Example
+
+[Here!](https://stackblitz.com/~/github.com/tmg0/hero-motion)
+
+### Run Locally
+
+```sh
+pnpm play
+```
 
 ## Props
 
