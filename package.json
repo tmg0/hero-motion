@@ -20,10 +20,6 @@
     "motion",
     "vueuse"
   ],
-  "files": [
-    "packages/core/dist",
-    "packages/nuxt/dist"
-  ],
   "exports": {
     ".": {
       "types": "./packages/core/dist/index.d.ts",
@@ -36,6 +32,10 @@
       "require": "./packages/nuxt/dist/module.cjs"
     }
   },
+  "files": [
+    "packages/core/dist",
+    "packages/nuxt/dist"
+  ],
   "scripts": {
     "dev": "pnpm --filter @hero-motion/* dev",
     "play": "pnpm play:vite",

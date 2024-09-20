@@ -16,7 +16,7 @@
 
 🚀 Support auto-import by `nuxt-module`
 
-🖥️ Example [here](https://stackblitz.com/~/github.com/tmg0/hero-motion)
+🖥️ Live example [here](https://stackblitz.com/~/github.com/tmg0/hero-motion)
 
 ## Installation
 
@@ -116,9 +116,8 @@ export default defineNuxtConfig({
 
 ## Playground
 
-- [vite](./playgrounds/vite).
-
-- [nuxt](./playgrounds/nuxt).
+- [vite](./playgrounds/vite)
+- [nuxt](./playgrounds/nuxt)
 
 ### Live Vite Example
 
