@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import type { Transition } from '../../types'
+import type { Transition as MotionTransition } from '@vueuse/motion'
 import { useRuntimeConfig } from '#app'
 import { computed } from '#imports'
 import { Hero } from 'hero-motion'
+
+export type Transition = MotionTransition
 
 defineProps<{
   as?: string

@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: false },
-  modules: ['../../src/module'],
+  modules: ['../../packages/nuxt/src/module'],
 
   hero: {
     transition: {

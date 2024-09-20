@@ -5,7 +5,7 @@
     "jsx": "preserve",
     "lib": ["dom", "esnext"],
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "strict": true,
     "noFallthroughCasesInSwitch": true,
@@ -17,6 +17,6 @@
     "isolatedModules": true,
     "skipLibCheck": true
   },
-  "include": ["src"],
-  "exclude": ["**/node_modules", "**/dist", "**/.turbo"]
+  "include": ["./packages"],
+  "exclude": ["**/node_modules", "**/dist"]
 }
