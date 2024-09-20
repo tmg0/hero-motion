@@ -1,5 +1,5 @@
 {
-  "name": "@hero-motion/nuxt",
+  "name": "@hero-motion-playground/nuxt",
   "type": "module",
   "private": true,
   "scripts": {

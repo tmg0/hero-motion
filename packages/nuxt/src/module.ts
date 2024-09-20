@@ -1,12 +1,9 @@
-import type { HeroProviderProps } from './components/hero-provider'
 import { addComponent, createResolver, defineNuxtModule } from '@nuxt/kit'
 import { defu } from 'defu'
 
-export interface ModuleOptions extends Omit<HeroProviderProps, 'as'> {}
+export type NuxtModule = ReturnType<typeof defineNuxtModule<any>>
 
-export type NuxtModule = ReturnType<typeof defineNuxtModule<ModuleOptions>>
-
-const module: any = defineNuxtModule<ModuleOptions>({
+const module: any = defineNuxtModule<any>({
   meta: {
     name: 'hero-motion/nuxt',
     configKey: 'hero',

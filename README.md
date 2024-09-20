@@ -4,19 +4,19 @@
 
 🌊 A shared layout animations for [vue](https://vuejs.org/) like [framer motion](https://www.framer.com/motion/), use `layoutId` prop and components will animate from one to another.
 
-- [Demo](https://stackblitz.com/~/github.com/tmg0/hero-motion)
-
 ## Features
 
 🏎 Smooth animations based on [@vueuse/motion](https://motion.vueuse.org/)
 
-✨ Written in TypeScript
+✨ Written with TypeScript
 
 🙌 Easy to use
 
 ✅ Support most of the `@vueuse/motion`'s props
 
-🚀 Support auto-import feature through `nuxt-module`
+🚀 Support auto-import by `nuxt-module`
+
+🖥️ Live example [here](https://stackblitz.com/~/github.com/tmg0/hero-motion)
 
 ## Installation
 
@@ -107,11 +107,27 @@ export default defineNuxtConfig({
 ```
 
 `hero-motion/nuxt` will auto import the `Hero` component for you, eliminating the need to manually import it in each file where you want to use it.
-Additionally, this module automatically wraps your Nuxt application with the `HeroProvider`, saving you the step of explicitly wrapping your root component. This streamlined setup process not only reduces boilerplate code but also ensures that the Hero motion functionality is available throughout your entire Nuxt application with minimal configuration effort on your part.
+
+```vue
+<template>
+  <Hero as="div" layout-id="ID" />
+</template>
+```
 
 ## Playground
 
-See [playground](./playground/vite/README.md).
+- [vite](./playgrounds/vite)
+- [nuxt](./playgrounds/nuxt)
+
+### Live Vite Example
+
+[Here!](https://stackblitz.com/~/github.com/tmg0/hero-motion)
+
+### Run Locally
+
+```sh
+pnpm play
+```
 
 ## Props
 

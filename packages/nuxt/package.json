@@ -1,0 +1,23 @@
+{
+  "name": "@hero-motion/nuxt",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs"
+    }
+  },
+  "scripts": {
+    "dev": "nuxt-module-build build --watch",
+    "build": "nuxt-module-build build"
+  },
+  "dependencies": {
+    "defu": "^6.1.4"
+  },
+  "devDependencies": {
+    "@hero-motion/core": "workspace:*",
+    "@nuxt/kit": "^3.13.2",
+    "@nuxt/module-builder": "^0.8.4"
+  }
+}

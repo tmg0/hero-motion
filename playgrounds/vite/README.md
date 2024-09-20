@@ -1,4 +1,4 @@
-# @hero-motion/playground-vite
+# @hero-motion-playground/vite
 
 [![NPM version](https://img.shields.io/npm/v/hero-motion)](https://www.npmjs.com/package/hero-motion)
 
