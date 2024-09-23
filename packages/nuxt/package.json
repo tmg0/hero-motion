@@ -18,6 +18,7 @@
   "devDependencies": {
     "@hero-motion/core": "workspace:*",
     "@nuxt/kit": "^3.13.2",
-    "@nuxt/module-builder": "^0.8.4"
+    "@nuxt/module-builder": "^0.8.4",
+    "nuxt": "^3.13.2"
   }
 }

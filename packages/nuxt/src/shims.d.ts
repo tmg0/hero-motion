@@ -1,5 +1,19 @@
 declare module '#app' {
-  const defineNuxtPlugin: any
-  const useRuntimeConfig: any
-  const useNuxtApp: any
+  import { defineNuxtPlugin, useNuxtApp, useRuntimeConfig } from 'nuxt/app'
+
+  export const defineNuxtPlugin
+  export const useRuntimeConfig
+  export const useNuxtApp
+}
+
+declare module '#imports' {
+  import { computed } from 'vue'
+
+  export const computed
+}
+
+declare module 'hero-motion' {
+  import { Hero } from 'hero-motion'
+
+  export const Hero
 }
