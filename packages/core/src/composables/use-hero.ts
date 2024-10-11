@@ -5,7 +5,8 @@ import { defu } from 'defu'
 import { computed, type MaybeRef, unref } from 'vue'
 import { type HeroContext, useHeroContext } from '../composables/use-hero-context'
 
-export interface UseHeroProps extends Omit<HeroProps, 'as'> {
+export interface UseHeroProps extends Omit<HeroProps, 'as' | 'ignore'> {
+  ignore?: string[]
   style?: Record<string, any>
   onComplete?: () => void
 }
