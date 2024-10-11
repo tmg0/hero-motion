@@ -76,7 +76,7 @@ export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, 
     const initial = { ...unref(previous), x: _x, y: _y, scaleX: scale.x, scaleY: scale.y, ...size }
     const enter = { ...style.value, x: 0, y: 0, scaleX: 1, scaleY: 1, ...size, transition: _transition }
 
-    motionInstance = useMotion(target, {
+    motionInstance = useMotion(unref(target), {
       initial: omit(initial, props.value.ignore as any),
       enter: omit(enter, props.value.ignore as any),
     })
