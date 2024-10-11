@@ -6,7 +6,7 @@ const props = {
   as: { type: String as PropType<keyof HTMLElementTagNameMap>, default: 'div' },
   layoutId: { type: [String, Number], default: undefined },
   transition: { type: Object as PropType<Partial<Transition>>, default: undefined },
-  ignore: { type: Array as PropType<string[]>, default: () => [] },
+  ignore: { type: Array as PropType<string[] | undefined>, default: () => [] },
 }
 
 export type HeroProps = ExtractPropTypes<typeof props>
