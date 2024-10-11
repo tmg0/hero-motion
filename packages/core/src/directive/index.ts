@@ -6,7 +6,7 @@ export function directive() {
   const props = ref({})
   const domRef = ref<HTMLElement | SVGElement>()
 
-  const { update, setupAnimation, clearAnimation } = useHero(domRef, props)
+  const { setup, clean } = useHero(domRef, props)
 
   return {
     mounted(dom: HTMLElement | SVGElement, _: any, vnode: any) {
@@ -17,13 +17,11 @@ export function directive() {
       }, {})
 
       domRef.value = dom
-
-      update()
-      setupAnimation()
+      setup()
     },
 
     beforeUnmount() {
-      clearAnimation()
+      clean()
     },
   }
 }

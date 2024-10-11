@@ -47,10 +47,11 @@ export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, 
     },
   })
 
-  tryOnMounted(setupAnimation)
-  tryOnBeforeUnmount(clearAnimation)
+  tryOnMounted(setup)
+  tryOnBeforeUnmount(clean)
 
-  function setupAnimation() {
+  function setup() {
+    update()
     bounding.x = x.value + width.value / 2
     bounding.y = y.value + height.value / 2
     bounding.width = width.value
@@ -81,7 +82,7 @@ export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, 
     })
   }
 
-  function clearAnimation() {
+  function clean() {
     update()
     bounding.x = x.value + width.value / 2
     bounding.y = y.value + height.value / 2
@@ -102,8 +103,7 @@ export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, 
     bounding,
     x,
     y,
-    update,
-    setupAnimation,
-    clearAnimation,
+    setup,
+    clean,
   }
 }
