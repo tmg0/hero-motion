@@ -30,24 +30,25 @@ export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, 
   const bounding: Record<string, number> = { x: 0, y: 0, width: 0, height: 0 }
   const { layouts, props: ctxProps } = ctx ?? useHeroContext()
   const { height, width, x, y, update } = useElementBounding(target)
-  const props = unref(options)
-  const style = computed(() => props?.style ?? {})
-  const transition = computed(() => defu(props.transition ?? {}, ctxProps.value.transition ?? {}, defaultTransition))
+  const props = computed(() => unref(options))
+  const style = computed(() => props.value?.style ?? {})
+  const transition = computed(() => defu(props.value.transition ?? {}, ctxProps.value.transition ?? {}, defaultTransition))
 
   const previous = computed({
     get() {
-      if (!props.layoutId)
+      if (!props.value.layoutId)
         return {}
-      return layouts.value[props.layoutId] ?? {}
+      return layouts.value[props.value.layoutId] ?? {}
     },
     set(value) {
-      if (!props.layoutId)
+      if (!props.value.layoutId)
         return
-      layouts.value[props.layoutId] = value
+      layouts.value[props.value.layoutId] = value
     },
   })
 
   tryOnMounted(setupAnimation)
+  tryOnBeforeUnmount(clearAnimation)
 
   function setupAnimation() {
     bounding.x = x.value + width.value / 2
@@ -65,7 +66,7 @@ export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, 
 
     const _transition = {
       ...unref(transition),
-      onComplete: props.onComplete,
+      onComplete: props.value.onComplete,
     }
 
     const size = { width: bounding.width, height: bounding.height }
@@ -75,12 +76,12 @@ export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, 
     const enter = { ...style.value, x: 0, y: 0, scaleX: 1, scaleY: 1, ...size, transition: _transition }
 
     motionInstance = useMotion(target, {
-      initial: omit(initial, props.ignore as any),
-      enter: omit(enter, props.ignore as any),
+      initial: omit(initial, props.value.ignore as any),
+      enter: omit(enter, props.value.ignore as any),
     })
   }
 
-  tryOnBeforeUnmount(() => {
+  function clearAnimation() {
     update()
     bounding.x = x.value + width.value / 2
     bounding.y = y.value + height.value / 2
@@ -95,7 +96,14 @@ export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, 
     if (transform.scaleY)
       _props.height = _props.height * (transform.scaleY as number ?? 1)
     previous.value = _props
-  })
+  }
 
-  return { bounding, x, y }
+  return {
+    bounding,
+    x,
+    y,
+    update,
+    setupAnimation,
+    clearAnimation,
+  }
 }

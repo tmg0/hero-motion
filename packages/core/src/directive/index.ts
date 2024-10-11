@@ -1,25 +1,29 @@
 import { camelCase } from 'scule'
-import { nextTick, ref, unref } from 'vue'
+import { ref } from 'vue'
 import { useHero } from '../composables/use-hero'
 
 export function directive() {
-  let props: any = {}
+  const props = ref({})
   const domRef = ref<HTMLElement | SVGElement>()
 
-  nextTick().then(() => {
-    const dom = unref(domRef)
-    const p = Object.keys(props).reduce((t: Record<string, any>, k: string) => {
-      const key = camelCase(k)
-      t[key] = props[k]
-      return t
-    }, {})
-    useHero(dom, p)
-  })
+  const { update, setupAnimation, clearAnimation } = useHero(domRef, props)
 
   return {
     mounted(dom: HTMLElement | SVGElement, _: any, vnode: any) {
-      props = vnode.props
+      props.value = Object.entries(vnode.props).reduce((t: Record<string, any>, [k, v]) => {
+        const key = camelCase(k)
+        t[key] = v
+        return t
+      }, {})
+
       domRef.value = dom
+
+      update()
+      setupAnimation()
+    },
+
+    beforeUnmount() {
+      clearAnimation()
     },
   }
 }
