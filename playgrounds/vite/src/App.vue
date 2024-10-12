@@ -1,24 +1,14 @@
 <script setup>
-import { directive, HeroProvider } from 'hero-motion'
+import { HeroProvider } from 'hero-motion'
 import { ref } from 'vue'
+import MultipleItems from './components/MultipleItems.vue'
 import { Tab, Tabs } from './components/Tabs'
+import ToggleSize from './components/ToggleSize.vue'
 
 const activeTab = ref('A')
-const isLarge = ref(false)
-const hasCompleted = ref(true)
-const vHero = directive()
 
 function onSelect(value) {
   activeTab.value = value
-}
-
-function onComplete() {
-  hasCompleted.value = true
-}
-
-function toggleSize() {
-  isLarge.value = !isLarge.value
-  hasCompleted.value = false
 }
 </script>
 
@@ -65,14 +55,15 @@ function toggleSize() {
         </div>
 
         <div class="p-4 bg-gradient-to-r from-violet-500 to-fuchsia-500 rounded-xl">
-          <div class="grid place-items-center h-48 w-48">
-            <button class="inline-flex justify-center rounded-md border border-transparent bg-violet-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-violet-200" @click="toggleSize">
-              Toggle (loading: {{ !hasCompleted }})
-            </button>
+          <ToggleSize />
+        </div>
 
-            <div v-if="isLarge" v-hero as="div" layout-id="box" class="w-24 h-24 rounded-xl cursor-pointer" :style="{ background: '#f43f5e' }" @complete="onComplete" />
-            <div v-else v-hero as="div" layout-id="box" class="w-12 h-12 rounded-xl cursor-pointer" :style="{ background: '#2dd4bf' }" @complete="onComplete" />
-          </div>
+        <div class="font-bold">
+          Multiple Items
+        </div>
+
+        <div class="p-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl">
+          <MultipleItems />
         </div>
       </div>
     </div>

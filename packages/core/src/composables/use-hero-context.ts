@@ -10,7 +10,7 @@ export interface HeroContext {
 }
 
 const useState = createGlobalState(() => {
-  const layouts = ref<Record<string, Layout>>({})
+  const layouts = ref<Record<string, Layout | Layout[]>>({})
   const props = ref<HeroProviderProps>({})
 
   return {
