@@ -37,8 +37,8 @@ export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, 
   const previous = computed({
     get() {
       if (!props.value.layoutId)
-        return {}
-      return layouts.value[props.value.layoutId] ?? {}
+        return [{}]
+      return layouts.value[props.value.layoutId] ?? [{}]
     },
     set(value) {
       if (!props.value.layoutId)
@@ -58,12 +58,12 @@ export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, 
     bounding.height = height.value
 
     let _y = 0
-    if (previous.value.y)
-      _y = previous.value.y - bounding.y
+    if (previous.value[0])
+      _y = previous.value[0].y - bounding.y
 
     let _x = 0
-    if (previous.value.x)
-      _x = previous.value.x - bounding.x
+    if (previous.value[0].x)
+      _x = previous.value[0].x - bounding.x
 
     const _transition = {
       ...unref(transition),
@@ -71,9 +71,9 @@ export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, 
     }
 
     const size = { width: bounding.width, height: bounding.height }
-    const scale = { x: previous.value.width / size.width, y: previous.value.height / size.height }
+    const scale = { x: previous.value[0].width / size.width, y: previous.value[0].height / size.height }
 
-    const initial = { ...unref(previous), x: _x, y: _y, scaleX: scale.x, scaleY: scale.y, ...size }
+    const initial = { ...unref(previous)[0], x: _x, y: _y, scaleX: scale.x, scaleY: scale.y, ...size }
     const enter = { ...style.value, x: 0, y: 0, scaleX: 1, scaleY: 1, ...size, transition: _transition }
 
     motionInstance = useMotion(unref(target), {
@@ -96,7 +96,7 @@ export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, 
       _props.width = _props.width * (transform.scaleX as number ?? 1)
     if (transform.scaleY)
       _props.height = _props.height * (transform.scaleY as number ?? 1)
-    previous.value = _props
+    previous.value = [_props]
   }
 
   return {

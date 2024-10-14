@@ -5,12 +5,12 @@ import { type Ref, ref } from 'vue'
 export interface Layout extends Record<string, any | undefined> {}
 
 export interface HeroContext {
-  layouts: Ref<Record<string, Layout>>
+  layouts: Ref<Record<string, Layout[]>>
   props: Ref<HeroProviderProps>
 }
 
 const useState = createGlobalState(() => {
-  const layouts = ref<Record<string, Layout | Layout[]>>({})
+  const layouts = ref<Record<string, Layout[]>>({})
   const props = ref<HeroProviderProps>({})
 
   return {
