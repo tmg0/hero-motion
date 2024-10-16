@@ -47,7 +47,7 @@ importers:
     devDependencies:
       '@vueuse/motion':
         specifier: ^2.2.5
-        version: 2.2.5(rollup@4.24.0)(vue@3.5.12(typescript@5.6.3))
+        version: 2.2.6(rollup@4.24.0)(vue@3.5.12(typescript@5.6.3))
       unplugin-vue-jsx:
         specifier: ^0.4.0
         version: 0.4.0(rollup@4.24.0)(vue@3.5.12(typescript@5.6.3))
@@ -93,7 +93,7 @@ importers:
         version: 11.1.0(vue@3.5.11(typescript@5.6.3))
       '@vueuse/motion':
         specifier: ^2.2.5
-        version: 2.2.5(vue@3.5.11(typescript@5.6.3))
+        version: 2.2.6(vue@3.5.11(typescript@5.6.3))
       hero-motion:
         specifier: workspace:*
         version: link:../..
@@ -1824,6 +1824,11 @@ packages:
 
   '@vueuse/motion@2.2.5':
     resolution: {integrity: sha512-pcqMdpPbm/Pd/rbQQ/sHyykdOahj0rueZ8WpLhhk8i1tbEcga80EhNJLn99G9J9DSuOvkJNYuv1n2OntGUc1rQ==}
+    peerDependencies:
+      vue: '>=3.0.0'
+
+  '@vueuse/motion@2.2.6':
+    resolution: {integrity: sha512-gKFktPtrdypSv44SaW1oBJKLBiP6kE5NcoQ6RsAU3InemESdiAutgQncfPe/rhLSLCtL4jTAhMmFfxoR6gm5LQ==}
     peerDependencies:
       vue: '>=3.0.0'
 
@@ -4553,8 +4558,8 @@ packages:
   tslib@2.4.0:
     resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
 
-  tslib@2.7.0:
-    resolution: {integrity: sha512-gLXCKdN1/j47AiHiOkJN69hJmcbGTHI0ImLmbYLHykhgeN0jVGola9yVjFgzCUklsZQMW55o+dW7IXv3RCXDzA==}
+  tslib@2.8.0:
+    resolution: {integrity: sha512-jWVzBLplnCmoaTr13V9dYbiQ99wvZRd0vNWaDRg+aVYRcjDF3nDksxFDE/+fkXnKhpnUUkmx5pK/v8mCtLVqZA==}
 
   tsup@8.3.0:
     resolution: {integrity: sha512-ALscEeyS03IomcuNdFdc0YWGVIkwH1Ws7nfTbAPuoILvEV2hpGQAY72LIOjglGo4ShWpZfpBqP/jpQVCzqYQag==}
@@ -7248,7 +7253,25 @@ snapshots:
 
   '@vueuse/metadata@11.1.0': {}
 
-  '@vueuse/motion@2.2.5(rollup@4.24.0)(vue@3.5.12(typescript@5.6.3))':
+  '@vueuse/motion@2.2.5(vue@3.5.11(typescript@5.6.3))':
+    dependencies:
+      '@vueuse/core': 10.11.1(vue@3.5.11(typescript@5.6.3))
+      '@vueuse/shared': 10.11.1(vue@3.5.11(typescript@5.6.3))
+      csstype: 3.1.3
+      framesync: 6.1.2
+      popmotion: 11.0.5
+      style-value-types: 5.1.2
+      vue: 3.5.11(typescript@5.6.3)
+    optionalDependencies:
+      '@nuxt/kit': 3.13.2
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - magicast
+      - rollup
+      - supports-color
+      - webpack-sources
+
+  '@vueuse/motion@2.2.6(rollup@4.24.0)(vue@3.5.12(typescript@5.6.3))':
     dependencies:
       '@vueuse/core': 10.11.1(vue@3.5.12(typescript@5.6.3))
       '@vueuse/shared': 10.11.1(vue@3.5.12(typescript@5.6.3))
@@ -7266,7 +7289,7 @@ snapshots:
       - supports-color
       - webpack-sources
 
-  '@vueuse/motion@2.2.5(vue@3.5.11(typescript@5.6.3))':
+  '@vueuse/motion@2.2.6(vue@3.5.11(typescript@5.6.3))':
     dependencies:
       '@vueuse/core': 10.11.1(vue@3.5.11(typescript@5.6.3))
       '@vueuse/shared': 10.11.1(vue@3.5.11(typescript@5.6.3))
@@ -8040,7 +8063,7 @@ snapshots:
       minimatch: 9.0.5
       semver: 7.6.3
       stable-hash: 0.0.4
-      tslib: 2.7.0
+      tslib: 2.8.0
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -10482,12 +10505,12 @@ snapshots:
 
   synckit@0.6.2:
     dependencies:
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   synckit@0.9.1:
     dependencies:
       '@pkgr/core': 0.1.1
-      tslib: 2.7.0
+      tslib: 2.8.0
 
   system-architecture@0.1.0: {}
 
@@ -10607,7 +10630,7 @@ snapshots:
 
   tslib@2.4.0: {}
 
-  tslib@2.7.0: {}
+  tslib@2.8.0: {}
 
   tsup@8.3.0(jiti@1.21.6)(postcss@8.4.47)(typescript@5.6.3)(yaml@2.5.1):
     dependencies:
