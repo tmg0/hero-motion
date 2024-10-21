@@ -13,7 +13,7 @@
     "build": "tsup-node"
   },
   "devDependencies": {
-    "@vueuse/motion": "^2.2.5",
+    "@vueuse/motion": "^2.2.6",
     "unplugin-vue-jsx": "^0.4.0"
   }
 }
