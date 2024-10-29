@@ -24,6 +24,10 @@ export function omit<T extends Record<string, any>, K extends keyof T>(source: T
   return picks as Omit<T, K>
 }
 
+function useBorderRadius(domRef: MaybeRef<HTMLElement | SVGElement | undefined>) {
+  return Number.parseInt(getComputedStyle(unref(domRef)!).borderRadius)
+}
+
 export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, options: MaybeRef<UseHeroProps>, ctx?: HeroContext) {
   let motionInstance: any
 
@@ -31,7 +35,9 @@ export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, 
   const { layouts, props: ctxProps } = ctx ?? useHeroContext()
   const { height, width, x, y, update } = useElementBounding(target)
   const props = computed(() => unref(options))
-  const style = computed(() => props.value?.style ?? {})
+
+  const style = computed(() => ({ borderRadius: useBorderRadius(target), ...props.value?.style ?? {} }))
+
   const transition = computed(() => defu(props.value.transition ?? {}, ctxProps.value.transition ?? {}, defaultTransition))
 
   const previous = computed({
@@ -72,8 +78,9 @@ export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, 
 
     const size = { width: bounding.width, height: bounding.height }
     const scale = { x: previous.value.width / size.width, y: previous.value.height / size.height }
+    const previousBorderRadius = (previous.value?.borderRadius ?? 0) / scale.x
 
-    const initial = { ...unref(previous), x: _x, y: _y, scaleX: scale.x, scaleY: scale.y, ...size }
+    const initial = { ...unref(previous), x: _x, y: _y, scaleX: scale.x, scaleY: scale.y, borderRadius: previousBorderRadius, ...size }
     const enter = { ...style.value, x: 0, y: 0, scaleX: 1, scaleY: 1, ...size, transition: _transition }
 
     motionInstance = useMotion(unref(target), {
@@ -91,7 +98,7 @@ export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, 
     bounding.y = bounding.y + (transform.y as number ?? 0)
     bounding.z = bounding.z + (transform.x as number ?? 0)
     const motionProperties = motionInstance ? motionInstance.motionProperties : style.value
-    const _props = { ...motionProperties, ...bounding }
+    const _props = { ...motionProperties, ...bounding, borderRadius: useBorderRadius(target) }
     if (transform.scaleX)
       _props.width = _props.width * (transform.scaleX as number ?? 1)
     if (transform.scaleY)
