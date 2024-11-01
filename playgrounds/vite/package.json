@@ -8,7 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@vueuse/core": "^11.1.0",
+    "@vueuse/core": "^11.2.0",
     "@vueuse/motion": "^2.2.6",
     "hero-motion": "workspace:*",
     "vue": "^3.5.12",
@@ -19,6 +19,6 @@
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.14",
-    "vite": "^5.4.9"
+    "vite": "^5.4.10"
   }
 }
