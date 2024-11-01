@@ -66,7 +66,7 @@ export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, 
 
     for (let i = 0; i < elt.children.length; i++) {
       const child = elt.children[i] as HTMLElement
-      child.style.transform = `scaleX(${1 / scaleX.value}) scaleY(${1 / scaleY.value})`
+      child.style.transform = `scaleX(${1 / x}) scaleY(${1 / y})`
     }
   })
 
