@@ -2,8 +2,9 @@ import type { HeroProps } from '../components/hero'
 import { tryOnBeforeUnmount, tryOnMounted, useElementBounding } from '@vueuse/core'
 import { useElementTransform, useMotion } from '@vueuse/motion'
 import { defu } from 'defu'
-import { computed, type MaybeRef, unref } from 'vue'
+import { computed, type MaybeRef, unref, watch } from 'vue'
 import { type HeroContext, useHeroContext } from '../composables/use-hero-context'
+import { useStyle } from './use-style'
 
 export interface UseHeroProps extends Omit<HeroProps, 'as' | 'ignore'> {
   ignore?: string[]
@@ -35,6 +36,10 @@ export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, 
   const { layouts, props: ctxProps } = ctx ?? useHeroContext()
   const { height, width, x, y, update } = useElementBounding(target)
   const props = computed(() => unref(options))
+  const { transform } = useStyle(target)
+
+  const scaleX = computed(() => transform.value.scaleX)
+  const scaleY = computed(() => transform.value.scaleY)
 
   const style = computed(() => ({ borderRadius: useBorderRadius(target), ...props.value?.style ?? {} }))
 
@@ -51,6 +56,18 @@ export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, 
         return
       layouts.value[props.value.layoutId] = value
     },
+  })
+
+  watch(() => [scaleX.value, scaleY.value], ([x, y]) => {
+    const elt = unref(target)
+
+    if (!elt)
+      return
+
+    for (let i = 0; i < elt.children.length; i++) {
+      const child = elt.children[i] as HTMLElement
+      child.style.transform = `scaleX(${1 / scaleX.value}) scaleY(${1 / scaleY.value})`
+    }
   })
 
   tryOnMounted(setup)
@@ -110,6 +127,8 @@ export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, 
     bounding,
     x,
     y,
+    scaleX,
+    scaleY,
     setup,
     clean,
   }

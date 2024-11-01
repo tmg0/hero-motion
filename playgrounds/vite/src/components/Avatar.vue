@@ -9,7 +9,5 @@ defineProps<{
 </script>
 
 <template>
-  <Hero :layout-id="`avatar:${id}`" :style="{ width: `${size}px`, height: `${size}px` }" class="text-white rounded-lg flex items-center justify-center uppercase overflow-hidden">
-    <img :src="src">
-  </Hero>
+  <Hero as="img" :src="src" :layout-id="`avatar:${id}`" :style="{ width: `${size}px`, height: `${size}px` }" class="text-white rounded-lg flex items-center justify-center uppercase overflow-hidden" />
 </template>
