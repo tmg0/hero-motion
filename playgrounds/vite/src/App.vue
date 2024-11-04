@@ -1,12 +1,11 @@
 <script setup>
-import { directive, Hero, HeroProvider } from 'hero-motion'
+import { Hero, HeroProvider } from 'hero-motion'
 import { ref } from 'vue'
 import { Tab, Tabs } from './components/Tabs'
 
 const activeTab = ref('A')
 const isLarge = ref(false)
 const hasCompleted = ref(true)
-const vHero = directive()
 
 function onSelect(value) {
   activeTab.value = value
@@ -70,10 +69,10 @@ function toggleSize() {
               Toggle (loading: {{ !hasCompleted }})
             </button>
 
-            <Hero v-if="isLarge" v-hero as="div" layout-id="box" class="w-36 h-36 rounded-xl flex items-center justify-center" :style="{ background: '#f43f5e' }" @complete="onComplete">
+            <Hero v-if="isLarge" as="div" layout-id="box" class="w-36 h-36 rounded-xl flex items-center justify-center bg-rose-500" @complete="onComplete">
               <div>text content</div>
             </Hero>
-            <Hero v-else v-hero as="div" layout-id="box" class="w-24 h-24 rounded-xl flex items-center justify-center" :style="{ background: '#2dd4bf' }" @complete="onComplete">
+            <Hero v-else as="div" layout-id="box" class="w-24 h-24 rounded-xl flex items-center justify-center bg-teal-400" @complete="onComplete">
               <div>text content</div>
             </Hero>
           </div>
