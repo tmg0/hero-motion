@@ -13,6 +13,19 @@ export const defaultTransition = {}
 const STYLE_INCLUDES = [
   'backgroundColor',
   'backgroundPosition',
+  'opacity',
+  'color',
+  'borderColor',
+  'outlineColor',
+  'textDecorationColor',
+  'boxShadow',
+  'textShadow',
+  'fontSize',
+  'fontWeight',
+  'letterSpacing',
+  'lineHeight',
+  'wordSpacing',
+  'textIndent',
 ]
 
 function useBorderRadius(domRef: MaybeRef<HTMLElement | SVGElement | undefined>) {
