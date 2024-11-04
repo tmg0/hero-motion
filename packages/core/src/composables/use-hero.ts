@@ -1,10 +1,10 @@
 import type { HeroProps } from '../components/hero'
+import { useStyle } from '@tmg0/vueuse-extra'
 import { tryOnBeforeUnmount, tryOnMounted, useElementBounding } from '@vueuse/core'
 import { useElementTransform, useMotion } from '@vueuse/motion'
 import { defu } from 'defu'
 import { computed, type MaybeRef, unref, watch } from 'vue'
 import { type HeroContext, useHeroContext } from '../composables/use-hero-context'
-import { useStyle } from './use-style'
 
 export interface UseHeroProps extends Omit<HeroProps, 'as' | 'ignore'> {
   ignore?: string[]
@@ -66,7 +66,7 @@ export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, 
 
     for (let i = 0; i < elt.children.length; i++) {
       const child = elt.children[i] as HTMLElement
-      child.style.transform = `scaleX(${1 / x}) scaleY(${1 / y})`
+      child.style.transform = `scaleX(${1 / (x as number)}) scaleY(${1 / (y as number)})`
     }
   })
 
