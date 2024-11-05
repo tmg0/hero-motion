@@ -131,8 +131,8 @@ export function useLayout(target: MaybeRef<HTMLElement | SVGElement | undefined>
     bounding.x = bounding.x + (transform.x as number ?? 0)
     bounding.y = bounding.y + (transform.y as number ?? 0)
     bounding.z = bounding.z + (transform.x as number ?? 0)
-    const motionProperties = motionInstance ? motionInstance.motionProperties : style.value
-    const _props = { ...motionProperties, ...bounding, ...borderRadius.value }
+    const motionProperties = motionInstance.motionProperties ?? {}
+    const _props = { ...style.value, ...motionProperties, ...bounding, ...borderRadius.value }
     if (transform.scaleX)
       _props.width = _props.width * (transform.scaleX as number ?? 1)
     if (transform.scaleY)
