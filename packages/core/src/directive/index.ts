@@ -6,7 +6,7 @@ export function directive() {
   const props = ref({})
   const domRef = ref<HTMLElement | SVGElement>()
 
-  const { mounted, unmounted } = useHero(domRef, props)
+  const { mounted, beforeUnmount } = useHero(domRef, props)
 
   return {
     mounted(dom: HTMLElement | SVGElement, _: any, vnode: any) {
@@ -21,7 +21,7 @@ export function directive() {
     },
 
     beforeUnmount() {
-      unmounted()
+      beforeUnmount()
     },
   }
 }

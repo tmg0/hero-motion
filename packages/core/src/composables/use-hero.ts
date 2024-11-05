@@ -20,6 +20,6 @@ export function useHero(target: MaybeRef<HTMLElement | SVGElement | undefined>, 
     scaleX,
     scaleY,
     mounted: setup,
-    unmounted: snapshot,
+    beforeUnmount: snapshot,
   }
 }
