@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "hero-motion": "workspace:*",
-    "nuxt": "^3.13.2",
+    "nuxt": "^3.14.0",
     "vue": "latest",
     "vue-router": "latest"
   }
