@@ -1,3 +1,5 @@
-import type { Transition as MotionTransition } from '@vueuse/motion'
+import type { MaybeRefOrGetter } from '@vueuse/core'
 
-export type Transition = MotionTransition
+export type { Transition } from '@vueuse/motion'
+
+export type PermissiveTarget = MaybeRefOrGetter<HTMLElement | SVGElement | null | undefined>
