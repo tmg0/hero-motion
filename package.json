@@ -1,6 +1,6 @@
 {
   "name": "hero-motion",
-  "version": "0.4.4",
+  "version": "0.5.0",
   "packageManager": "pnpm@9.12.3",
   "description": "A shared layout animations for vue like framer motion.",
   "author": "zekun.jin",
