@@ -5,6 +5,7 @@ import { defu } from 'defu'
 import { computed, type MaybeRef, nextTick, unref, watch } from 'vue'
 import { type HeroContext, useHeroContext } from '../composables/use-hero-context'
 import { omit } from '../utils'
+import { useScaleBorderRadius } from './use-border-radius'
 import { useComputedStyle } from './use-computed-style'
 import { useStyle } from './use-style'
 
@@ -41,13 +42,7 @@ export function useLayout(target: MaybeRef<HTMLElement | SVGElement | undefined>
   const { style: computedStyle } = useComputedStyle(target, { filter: k => STYLE_INCLUDES.includes(k) })
   const props = computed(() => unref(options))
   const { transform } = useStyle(target)
-
-  const borderRadius = computed(() => ({
-    borderBottomLeftRadius: Number.parseInt(computedStyle.value?.borderBottomLeftRadius as string) ?? 0,
-    borderBottomRightRadius: Number.parseInt(computedStyle.value?.borderBottomRightRadius as string) ?? 0,
-    borderTopLeftRadius: Number.parseInt(computedStyle.value?.borderTopLeftRadius as string) ?? 0,
-    borderTopRightRadius: Number.parseInt(computedStyle.value?.borderTopRightRadius as string) ?? 0,
-  }))
+  const { borderRadius } = useScaleBorderRadius(computedStyle)
 
   const scaleX = computed(() => transform.value.scaleX)
   const scaleY = computed(() => transform.value.scaleY)
@@ -100,19 +95,13 @@ export function useLayout(target: MaybeRef<HTMLElement | SVGElement | undefined>
       onComplete: props.value.onComplete,
     }
 
-    const size = { width: bounding.width, height: bounding.height }
-    const scale = { x: previous.value.width / size.width, y: previous.value.height / size.height }
-
-    const previousBorderRadius = {
-      borderBottomLeftRadius: (previous.value?.borderBottomLeftRadius ?? 0) / ((scale.x + scale.y) / 2),
-      borderBottomRightRadius: (previous.value?.borderBottomRightRadius ?? 0) / ((scale.x + scale.y) / 2),
-      borderTopLeftRadius: (previous.value?.borderTopLeftRadius ?? 0) / ((scale.x + scale.y) / 2),
-      borderTopRightRadius: (previous.value?.borderTopRightRadius ?? 0) / ((scale.x + scale.y) / 2),
-    }
-
     await nextTick()
 
-    const initial = { ...unref(previous), x: _x, y: _y, scaleX: scale.x, scaleY: scale.y, ...previousBorderRadius, ...size }
+    const size = { width: bounding.width, height: bounding.height }
+    const scale = { x: previous.value.width / size.width, y: previous.value.height / size.height }
+    const { borderRadius: previousBorderRadius } = useScaleBorderRadius(previous.value, { scaleX: 1 / scale.x, scaleY: 1 / scale.y })
+
+    const initial = { ...unref(previous), x: _x, y: _y, scaleX: scale.x, scaleY: scale.y, ...previousBorderRadius.value, ...size }
     const enter = { ...style.value, x: 0, y: 0, scaleX: 1, scaleY: 1, ...size, transition: _transition }
 
     motionInstance = useMotion(unref(target), {
