@@ -34,9 +34,6 @@ const STYLE_INCLUDES = [
 ]
 
 export function useLayout(target: MaybeRef<HTMLElement | SVGElement | undefined>, options: MaybeRef<UseHeroProps>, ctx?: HeroContext) {
-  if (import.meta.server)
-    return
-
   let motionInstance: any
 
   const bounding: Record<string, number> = { x: 0, y: 0, width: 0, height: 0 }

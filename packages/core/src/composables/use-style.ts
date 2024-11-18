@@ -40,10 +40,13 @@ function useTransform(target: PermissiveTarget) {
 }
 
 export function useStyle(target: PermissiveTarget, options: UseStyleOptions = {}) {
-  let observer: MutationObserver
-
-  const domRef = toRef(target)
   const transform = ref<Partial<Transform>>({})
+
+  if (import.meta.server)
+    return { transform }
+
+  let observer: MutationObserver
+  const domRef = toRef(target)
 
   if (domRef.value)
     transform.value = useTransform(domRef).value
