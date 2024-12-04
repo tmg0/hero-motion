@@ -42,9 +42,6 @@ function useTransform(target: PermissiveTarget) {
 export function useStyle(target: PermissiveTarget, options: UseStyleOptions = {}) {
   const transform = ref<Partial<Transform>>({})
 
-  if (import.meta.server)
-    return { transform }
-
   let observer: MutationObserver
   const domRef = toRef(target)
 

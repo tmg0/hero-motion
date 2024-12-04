@@ -7,9 +7,7 @@ declare module '#app' {
 }
 
 declare module '#imports' {
-  import { computed } from 'vue'
-
-  export const computed
+  export * from 'vue'
 }
 
 declare module 'hero-motion' {

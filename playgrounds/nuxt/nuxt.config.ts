@@ -6,7 +6,8 @@ export default defineNuxtConfig({
 
   hero: {
     transition: {
-      type: 'spring',
+      type: 'keyframe',
+      duration: 5000,
     },
   },
 })

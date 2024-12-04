@@ -3,8 +3,21 @@ const isLarge = ref(false)
 </script>
 
 <template>
-  <div :transition="{ type: 'spring' }">
-    <Hero v-if="!isLarge" layout-id="1" style="width: 50px; height: 50px; background: #f43f5e;" @click="isLarge = !isLarge" />
-    <Hero v-else layout-id="1" style="width: 100px; height: 100px; background: #2dd4bf;" @click="isLarge = !isLarge" />
+  <div>
+    <button style="margin-bottom: 4px;" @click="isLarge = !isLarge">
+      Trigger
+    </button>
+
+    <Hero v-if="!isLarge" layout-id="1" style="width: 100px; height: 100px; background-color: #f43f5e; display: flex; align-items: center; justify-content: center;">
+      <div>
+        Content
+      </div>
+    </Hero>
+
+    <Hero v-else layout-id="1" style="width: 200px; height: 200px; background-color: #2dd4bf; display: flex; align-items: center; justify-content: center;">
+      <div>
+        Content
+      </div>
+    </Hero>
   </div>
 </template>
