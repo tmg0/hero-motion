@@ -1,4 +1,5 @@
-import { computed, type MaybeRef, type MaybeRefOrGetter, toRef, unref } from 'vue'
+import type { MaybeRef, MaybeRefOrGetter } from 'vue'
+import { computed, toRef, unref } from 'vue'
 
 interface UseScaleBorderRadiusOptions {
   scaleX: number
