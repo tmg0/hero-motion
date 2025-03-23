@@ -111,7 +111,7 @@ export function useLayout(target: MaybeRef<HTMLElement | SVGElement | undefined>
       enter: omit(enter, props.value.ignore as any),
     })
 
-    previous.value = enter
+    snapshot()
   }
 
   function snapshot() {
