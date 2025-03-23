@@ -1,7 +1,7 @@
 {
   "name": "hero-motion",
   "version": "0.5.2",
-  "packageManager": "pnpm@9.15.1",
+  "packageManager": "pnpm@10.6.5",
   "description": "A shared layout animations for vue like framer motion.",
   "author": "zekun.jin",
   "license": "MIT",
@@ -51,18 +51,18 @@
     "vue": ">=3.0.0"
   },
   "dependencies": {
-    "@vueuse/core": "^12.0.0",
+    "@vueuse/core": "^13.0.0",
     "defu": "^6.1.4",
     "destr": "^2.0.3",
     "scule": "^1.3.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^3.11.2",
+    "@antfu/eslint-config": "^4.11.0",
     "@vue/tsconfig": "^0.7.0",
-    "eslint": "^9.16.0",
-    "tsup": "^8.3.5",
-    "typescript": "^5.7.2",
-    "vitest": "^3.0.0",
+    "eslint": "^9.23.0",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.9",
     "vue": "^3.5.13"
   }
 }

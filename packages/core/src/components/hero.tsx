@@ -1,5 +1,6 @@
+import type { ExtractPropTypes, PropType } from 'vue'
 import type { Transition } from '../types'
-import { computed, defineComponent, type ExtractPropTypes, type PropType, ref } from 'vue'
+import { computed, defineComponent, ref } from 'vue'
 import { useHero } from '../composables/use-hero'
 
 const props = {
