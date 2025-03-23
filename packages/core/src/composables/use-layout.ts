@@ -114,32 +114,15 @@ export function useLayout(target: MaybeRef<HTMLElement | SVGElement | undefined>
     snapshot()
   }
 
-  function snapshot(record?: Record<string, any>) {
+  function snapshot() {
     update()
-
-    if (record) {
-      const entries = Object.entries(record).filter(([_, v]) => Boolean(v))
-
-      const _props: Record<string, number> = {}
-      for (const [k, v] of entries) {
-        if (k === 'x')
-          _props.x = v + width.value / 2
-        if (k === 'y')
-          _props.y = v + height.value / 2
-        else
-          _props[k] = v
-      }
-      previous.value = { ...previous.value, ..._props }
-      return
-    }
-
     bounding.x = x.value + width.value / 2
     bounding.y = y.value + height.value / 2
     const { transform } = useElementTransform(target)
     bounding.x = bounding.x + (transform.x as number ?? 0)
     bounding.y = bounding.y + (transform.y as number ?? 0)
     bounding.z = bounding.z + (transform.x as number ?? 0)
-    const motionProperties = motionInstance?.motionProperties ?? {}
+    const motionProperties = motionInstance.motionProperties ?? {}
     const _props = { ...style.value, ...motionProperties, ...bounding, ...borderRadius.value }
     if (transform.scaleX)
       _props.width = _props.width * (transform.scaleX as number ?? 1)
@@ -147,10 +130,6 @@ export function useLayout(target: MaybeRef<HTMLElement | SVGElement | undefined>
       _props.height = _props.height * (transform.scaleY as number ?? 1)
     previous.value = _props
   }
-
-  watch(() => [x.value, y.value], (_, [x, y]) => {
-    snapshot({ x, y })
-  })
 
   return {
     bounding,
@@ -160,7 +139,5 @@ export function useLayout(target: MaybeRef<HTMLElement | SVGElement | undefined>
     scaleY,
     setup,
     snapshot,
-    update,
-    style,
   }
 }

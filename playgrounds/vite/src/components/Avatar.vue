@@ -2,7 +2,7 @@
 import { Hero } from 'hero-motion'
 
 defineProps<{
-  id: number | string
+  id?: number | string
   size?: number | string
   src?: string
 }>()

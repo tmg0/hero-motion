@@ -23,7 +23,7 @@ function toggleSize() {
 </script>
 
 <template>
-  <HeroProvider :transition="{ type: 'spring' }">
+  <HeroProvider>
     <div class="bg-black/90 w-full min-h-screen text-white">
       <div class="px-6 py-12 lg:py-24  lg:px-0 lg:w-[768px] mx-auto flex flex-col gap-6">
         <div class="text-6xl font-bold flex gap-4">
