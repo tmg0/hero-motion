@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Hero } from 'hero-motion'
+import { HeroNext } from 'hero-motion'
 
 defineProps<{
   id?: number | string
@@ -9,5 +9,5 @@ defineProps<{
 </script>
 
 <template>
-  <Hero as="img" :src="src" :layout-id="`avatar:${id}`" :style="{ width: `${size}px`, height: `${size}px` }" class="text-white rounded-lg flex items-center justify-center uppercase overflow-hidden" />
+  <HeroNext as="img" :src="src" :layout-id="`avatar:${id}`" :style="{ width: `${size}px`, height: `${size}px` }" class="text-white rounded-lg flex items-center justify-center uppercase overflow-hidden" />
 </template>

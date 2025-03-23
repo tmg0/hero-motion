@@ -57,11 +57,7 @@ function toggleSize() {
         </div>
 
         <div class="p-4 bg-gradient-to-r from-sky-500 to-indigo-500 rounded-xl">
-          <RouterView v-slot="{ Component }">
-            <KeepAlive>
-              <component :is="Component" />
-            </KeepAlive>
-          </RouterView>
+          <RouterView />
         </div>
 
         <div class="font-bold">
