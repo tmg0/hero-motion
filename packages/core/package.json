@@ -14,6 +14,6 @@
   },
   "devDependencies": {
     "@vueuse/motion": "^3.0.0",
-    "unplugin-vue-jsx": "^0.4.0"
+    "unplugin-vue-jsx": "^0.6.0"
   }
 }
