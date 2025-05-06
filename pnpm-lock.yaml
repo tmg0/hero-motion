@@ -19,7 +19,7 @@ importers:
         version: 6.1.4
       destr:
         specifier: ^2.0.3
-        version: 2.0.3
+        version: 2.0.5
       scule:
         specifier: ^1.3.0
         version: 1.3.0
@@ -90,7 +90,7 @@ importers:
         version: 3.5.13(typescript@5.8.2)
       vue-router:
         specifier: latest
-        version: 4.5.0(vue@3.5.13(typescript@5.8.2))
+        version: 4.5.1(vue@3.5.13(typescript@5.8.2))
 
   playgrounds/vite:
     dependencies:
@@ -1027,6 +1027,7 @@ packages:
 
   '@oxc-parser/wasm@0.60.0':
     resolution: {integrity: sha512-Dkf9/D87WGBCW3L0+1DtpAfL4SrNsgeRvxwjpKCtbH7Kf6K+pxrT0IridaJfmWKu1Ml+fDvj+7HEyBcfUC/TXQ==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   '@oxc-project/types@0.56.5':
     resolution: {integrity: sha512-skY3kOJwp22W4RkaadH1hZ3hqFHjkRrIIE0uQ4VUg+/Chvbl+2pF+B55IrIk2dgsKXS57YEUsJuN6I6s4rgFjA==}
@@ -2228,8 +2229,8 @@ packages:
     resolution: {integrity: sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==}
     engines: {node: '>=6'}
 
-  destr@2.0.3:
-    resolution: {integrity: sha512-2N3BOUU4gYMpTP24s5rF5iP7BDr7uNTCs4ozw3kf/eKfvWSIu93GEBi5m427YoyJoeOzQ5smuu4nNAPGb8idSQ==}
+  destr@2.0.5:
+    resolution: {integrity: sha512-ugFTXCtDZunbzasqBxrK93Ik/DRYsO6S/fedkWEMKqt04xZ4csmnmwGDBAb07QWNaGMAmnTIemsYZCksjATwsA==}
 
   destroy@1.2.0:
     resolution: {integrity: sha512-2sJGJTaXIIaR1w4iJSNoN0hnMY7Gpc/n8D4qSCJw8QqFWXf7cuAgnEHxBpweaVcPevC2l3KpjYCx3NypQQgaJg==}
@@ -4005,6 +4006,7 @@ packages:
 
   rspack-resolver@1.2.2:
     resolution: {integrity: sha512-Fwc19jMBA3g+fxDJH2B4WxwZjE0VaaOL7OX/A4Wn5Zv7bOD/vyPZhzXfaO73Xc2GAlfi96g5fGUa378WbIGfFw==}
+    deprecated: Please migrate to the brand new `@rspack/resolver` or `unrs-resolver` instead
 
   run-applescript@7.0.0:
     resolution: {integrity: sha512-9by4Ij99JUr/MCFBUkDKLWK3G9HVXmabKz9U5MlIAIuvuzkiOicRYs8XJLxX+xahD+mLiiCYDqF9dKAgtzKP1A==}
@@ -4715,6 +4717,11 @@ packages:
 
   vue-router@4.5.0:
     resolution: {integrity: sha512-HDuk+PuH5monfNuY+ct49mNmkCRK4xJAV9Ts4z9UFc4rzdDnxQLyCMGGc8pKhZhHTVzfanpNwB/lwqevcBwI4w==}
+    peerDependencies:
+      vue: ^3.2.0
+
+  vue-router@4.5.1:
+    resolution: {integrity: sha512-ogAF3P97NPm8fJsE4by9dwSYtDwXIY1nFY9T6DyQnGHd1E2Da94w9JIolpe42LJGIl0DwOHBi8TcRPlPGwbTtw==}
     peerDependencies:
       vue: ^3.2.0
 
@@ -5553,7 +5560,7 @@ snapshots:
       '@vue/devtools-kit': 7.7.2
       birpc: 2.2.0
       consola: 3.4.2
-      destr: 2.0.3
+      destr: 2.0.5
       error-stack-parser-es: 1.0.5
       execa: 8.0.1
       fast-npm-meta: 0.3.1
@@ -5590,7 +5597,7 @@ snapshots:
       c12: 3.0.2(magicast@0.3.5)
       consola: 3.4.2
       defu: 6.1.4
-      destr: 2.0.3
+      destr: 2.0.5
       errx: 0.1.0
       exsolve: 1.0.4
       globby: 14.1.0
@@ -5643,7 +5650,7 @@ snapshots:
       '@nuxt/kit': 3.16.1(magicast@0.3.5)
       citty: 0.1.6
       consola: 3.4.2
-      destr: 2.0.3
+      destr: 2.0.5
       dotenv: 16.4.7
       git-url-parse: 16.0.1
       is-docker: 3.0.0
@@ -6981,7 +6988,7 @@ snapshots:
 
   dequal@2.0.3: {}
 
-  destr@2.0.3: {}
+  destr@2.0.5: {}
 
   destroy@1.2.0: {}
 
@@ -7644,7 +7651,7 @@ snapshots:
       cookie-es: 1.2.2
       crossws: 0.3.4
       defu: 6.1.4
-      destr: 2.0.3
+      destr: 2.0.5
       iron-webcrypto: 1.2.1
       node-mock-http: 1.0.0
       radix3: 1.1.2
@@ -8394,7 +8401,7 @@ snapshots:
       crossws: 0.3.4
       db0: 0.3.1
       defu: 6.1.4
-      destr: 2.0.3
+      destr: 2.0.5
       dot-prop: 9.0.0
       esbuild: 0.25.1
       escape-string-regexp: 5.0.0
@@ -8535,7 +8542,7 @@ snapshots:
       consola: 3.4.2
       cookie-es: 2.0.0
       defu: 6.1.4
-      destr: 2.0.3
+      destr: 2.0.5
       devalue: 5.1.1
       errx: 0.1.0
       esbuild: 0.25.1
@@ -8651,7 +8658,7 @@ snapshots:
 
   ofetch@1.4.1:
     dependencies:
-      destr: 2.0.3
+      destr: 2.0.5
       node-fetch-native: 1.6.6
       ufo: 1.5.4
 
@@ -9053,7 +9060,7 @@ snapshots:
   rc9@2.1.2:
     dependencies:
       defu: 6.1.4
-      destr: 2.0.3
+      destr: 2.0.5
 
   read-cache@1.0.0:
     dependencies:
@@ -9759,7 +9766,7 @@ snapshots:
     dependencies:
       anymatch: 3.1.3
       chokidar: 4.0.3
-      destr: 2.0.3
+      destr: 2.0.5
       h3: 1.15.1
       lru-cache: 10.4.3
       node-fetch-native: 1.6.6
@@ -9975,6 +9982,11 @@ snapshots:
       - supports-color
 
   vue-router@4.5.0(vue@3.5.13(typescript@5.8.2)):
+    dependencies:
+      '@vue/devtools-api': 6.6.4
+      vue: 3.5.13(typescript@5.8.2)
+
+  vue-router@4.5.1(vue@3.5.13(typescript@5.8.2)):
     dependencies:
       '@vue/devtools-api': 6.6.4
       vue: 3.5.13(typescript@5.8.2)
